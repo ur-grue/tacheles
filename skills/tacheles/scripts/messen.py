@@ -245,6 +245,20 @@ STRECKVERBEN = [
 ]
 STRECK_RE = re.compile("|".join(f"(?:{p})" for p in STRECKVERBEN), re.I)
 
+# Falscher Handlungsträger (slop.md 3): Unbelebtes bekommt ein Verb der Absicht oder des Urteils.
+# Absichtlich eng gehalten. Software darf messen, prüfen, erkennen – das tut sie wirklich.
+# Wollen, glauben, fordern und Fehler machen kann nur, wer handelt.
+UNBELEBT = (r"Prompts?|Studien?|Untersuchungen?|Analysen?|Texte?|Ansätze|Ansatz|Methoden?|Verfahren|Konzepte?|"
+            r"Strategien?|Diskussionen?|Entwicklungen?|Märkte?|Markt|Entscheidungen?|Erkenntnisse?|Zahlen|Daten|"
+            r"Technologien?|Digitalisierung|Projekte?|Berichte?|Branchen?|Wirtschaft|Politik|Gesellschaft")
+ABSICHT = (r"glaubt|glauben|will|wollen|meint|meinen|denkt|denken|entscheidet|entscheiden|fordert|fordern|"
+           r"verspricht|versprechen|belohnt|belohnen|bestraft|bestrafen|kämpft|kämpfen|versucht|versuchen|"
+           r"lernt|lernen|weiß|wissen|versteht|verstehen|hofft|hoffen|fürchtet|fürchten|beschließt|beschließen|"
+           r"irrt|reift|reifen|entsteht|entstehen")
+HANDLUNGSTRAEGER_RE = re.compile(
+    rf"(?<![\wäöüß])(?:{UNBELEBT})\s+(?:\w+\s+){{0,2}}(?:(?:{ABSICHT})|(?:machen|macht)\s+(?:\w+\s+){{0,2}}Fehler|"
+    rf"zeigt uns|zeigen uns|sagt uns|sagen uns|gewinnt an Fahrt|bewegt sich in Richtung)(?![\wäöüß])")
+
 BINAER_RE = re.compile(r"\bnicht\s+(?:nur\s+)?[^.;:!?]{2,80}?,\s*sondern\b", re.I)
 NICHTNUR_RE = re.compile(r"\bnicht nur\b[^.!?]{0,120}?\bsondern auch\b", re.I)
 FRAGE_ANFANG_RE = re.compile(r"^[^.!?]{3,160}\?\s*$")
@@ -384,6 +398,8 @@ def messen(rohtext: str, stufe: int, ziele: dict, floskeln: dict[str, list[str]]
         for tr in STRECK_RE.finditer(s):
             m.streck += 1
             m.befunde.append(Befund("verstoss" if ziele["streck"] == 0 else "hinweis", f"Streckverb „{tr.group(0)}“", i, kuerzen(s)))
+        for tr in HANDLUNGSTRAEGER_RE.finditer(s):
+            m.befunde.append(Befund("hinweis", f"Falscher Handlungsträger: „{tr.group(0)}“ – wer handelt? (slop.md 3)", i, kuerzen(s)))
         if NICHTNUR_RE.search(s):
             m.befunde.append(Befund("hinweis", "„nicht nur … sondern auch“ – meist reicht „und“", i, kuerzen(s)))
         elif BINAER_RE.search(s):

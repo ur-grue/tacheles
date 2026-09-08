@@ -89,6 +89,16 @@ class SlopErkennung(unittest.TestCase):
         self.assertGreater(m.streck, 0)
         self.assertGreater(m.nominal, 0)
 
+    def test_falscher_handlungstraeger(self):
+        m = miss("Anti-Slop-Prompts machen zwei Fehler. Der Markt belohnt schnelle Anbieter.")
+        treffer = [b for b in m.befunde if "Handlungsträger" in b.text]
+        self.assertEqual(len(treffer), 2, [b.text for b in m.befunde])
+
+    def test_software_darf_messen(self):
+        """Ein Werkzeug, das wirklich misst und prüft, ist kein falscher Handlungsträger."""
+        m = miss("Das Skript misst die Satzlänge. Das Tool erkennt Duplikate und prüft die Quellen.")
+        self.assertEqual([b for b in m.befunde if "Handlungsträger" in b.text], [])
+
     def test_passiv_nicht_bei_perfekt(self):
         m = miss("Die Redaktion hat den Text geprüft und ihn danach veröffentlicht.")
         self.assertEqual(m.passiv, 0, [b.text for b in m.befunde])

@@ -42,6 +42,7 @@ Unbelebtes bekommt menschliche Verben. Das Muster versteckt, wer handelt.
 | „Die Daten zeigen uns“, „Die Studie betont“ | Wer hat ausgewertet? „Aus den Daten lesen wir …“ |
 | „Der Markt belohnt“, „Das Projekt gewinnt an Fahrt“ | Wer kauft, wer zahlt, wer hat was beschleunigt? |
 | „dient als“, „fungiert als“, „stellt … dar“, „verfügt über“ (Kopula-Vermeidung) | „ist“, „hat“. Das Modell meidet die einfache Kopula; der Redakteur nicht. |
+| „Der Prompt kürzt“, „Die Studie fordert“, „Der Ansatz will“ | Wer kürzt, fordert, will? Das Modell kürzt, die Autorin fordert. Software darf messen, prüfen, erkennen: Das tut sie wirklich. Wollen, glauben und Fehler machen kann nur, wer handelt. |
 
 Ausnahme: etablierte Fachsprache („der Kurs fällt“, „die Kosten steigen“) ist kein Slop.
 
