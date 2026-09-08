@@ -1,6 +1,9 @@
 {
   "name": "tacheles",
-  "owner": { "name": "ur-grue" },
+  "owner": {
+    "name": "ur-grue"
+  },
+  "description": "Deutsche Texte redigieren wie ein Redakteur: Anti-Slop, fünf Stufen, acht Autorenstile.",
   "plugins": [
     {
       "name": "tacheles",
