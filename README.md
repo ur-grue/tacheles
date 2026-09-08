@@ -4,9 +4,9 @@
 
 **Redigiert deutsche Texte wie ein erfahrener Redakteur. Slop raus, Substanz bleibt.**
 
-Ein Skill für [Claude Code](https://claude.com/claude-code). Eine Zahl wählt die Dichte, von 1 bis 5.
-Ein Name wählt die Stimme, von Wolf Schneider bis Thomas Bernhard.
-Ein Messskript prüft, ob das Ergebnis hält, was das Skill verspricht.
+Ein Skill für [Claude Code](https://claude.com/claude-code). Die Dichte wählt eine Zahl von 1 bis 5,
+die Stimme wahlweise ein Name: Wolf Schneider, Kästner, Tucholsky, Kisch, Kafka, Fontane, Mann, Bernhard.
+Ob das Ergebnis hält, was es verspricht, misst ein Skript nach.
 
 [![Tests](https://github.com/ur-grue/tacheles/actions/workflows/tests.yml/badge.svg)](https://github.com/ur-grue/tacheles/actions/workflows/tests.yml)
 [![Lizenz: MIT](https://img.shields.io/badge/Lizenz-MIT-1d1b16)](LICENSE)
@@ -25,9 +25,9 @@ Ein Messskript prüft, ob das Ergebnis hält, was das Skill verspricht.
 
 ## Warum
 
-Anti-Slop-Prompts haben zwei Fehler. Sie kürzen, bis die Begründung weg ist, und sie tauschen Floskeln gegen andere Floskeln. Tacheles macht es umgekehrt: Es zählt zuerst die Substanz des Originals, schreibt dann um, und misst am Ende nach, ob alles noch da ist. Kürze ist kein Ziel, sondern eine Nebenwirkung.
+Wer Slop mit einem Prompt bekämpft, bekommt meistens zwei Ergebnisse. Das Modell streicht so lange, bis aus „Wir empfehlen Anbieter A, weil nur er die Daten im Haus behält“ ein „Wir empfehlen Anbieter A“ geworden ist. Die Floskeln wiederum ersetzt es durch neue. Tacheles geht den umgekehrten Weg: Erst notiert es, was der Text an Zahlen, Namen und Begründungen enthält, dann schreibt es um, am Ende prüft es, ob alles noch dasteht. Kürzer wird der Text dabei meistens. Darauf zielt das Verfahren aber nicht.
 
-Der zweite Unterschied ist, dass Floskelfreiheit nicht reicht. Ein Text kann jedes Buzzword vermeiden und trotzdem nach Maschine klingen: wenn alle Sätze mit dem Subjekt beginnen, alle gleich lang sind, nur gereiht statt verkettet, ohne Standpunkt. Genau das prüft tacheles zusätzlich, mit den Mitteln der deutschen Stilistik und mit den Befunden der Forschung zu KI-Texten.
+Dazu kommt der zweite Punkt: Floskelfreiheit allein reicht nicht. Ein Text kann jedes Buzzword vermeiden und trotzdem nach Maschine klingen. Das passiert, wenn alle Sätze mit dem Subjekt beginnen, alle gleich lang sind und nur gereiht statt verkettet. Und wenn niemand darin einen Standpunkt hat. Genau da setzt die zweite Prüfung an, mit den Mitteln der deutschen Stilistik und den Befunden der Forschung zu KI-Texten.
 
 ## Installation
 
@@ -38,7 +38,7 @@ Als Plugin, in Claude Code:
 /plugin install tacheles@tacheles
 ```
 
-Von Hand: den Ordner `skills/tacheles` nach `~/.claude/skills/tacheles` kopieren, für alle Projekte, oder nach `.claude/skills/tacheles` im Projekt.
+Von Hand: den Ordner `skills/tacheles` nach `~/.claude/skills/tacheles` kopieren, dann steht er in allen Projekten bereit. Nach `.claude/skills/tacheles` kopiert, gilt er nur im jeweiligen Projekt.
 
 Das Messskript braucht Python 3 und keine Pakete.
 
@@ -52,7 +52,7 @@ Das Messskript braucht Python 3 und keine Pakete.
 | 4 | ausführlich | Essay, Analyse | 15–21 | Herleitung und Gegenargument ausformuliert, Perioden erlaubt |
 | 5 | elaboriert | literarische Prosa, Festrede | 18–30 | Rhythmus, Parenthesen, präzise Fremdwörter; kein Wort ohne Arbeit |
 
-Die Stufe ist keine Länge. Stufe 1 wird oft länger als Stufe 3, weil sie erklärt. Stufe 5 baut lange Sätze, keine leeren. Die Zielwerte stammen aus DIN SPEC 33429, den Regeln für Einfache Sprache, der dpa-Faustregel, der Klartext-Initiative Hohenheim und Messungen deutscher Medien.
+Die Stufe ist keine Länge: Stufe 1 wird oft länger als Stufe 3, weil sie erklärt, und Stufe 5 baut lange Sätze, keine leeren. Die Zielwerte stammen aus DIN SPEC 33429, den Regeln für Einfache Sprache, der dpa-Faustregel, der Klartext-Initiative Hohenheim und Messungen deutscher Medien.
 
 ## Die acht Stile
 
@@ -83,9 +83,9 @@ Alle neun Fakten der Vorlage stehen in jeder Fassung. Die Proben für alle Stufe
 
 Drei Dinge unterscheiden das Skill von einem gewöhnlichen Anti-Slop-Prompt.
 
-**Das Inventar.** Vor dem ersten neuen Satz listet der Redakteur die Substanz des Originals: Zahlen, Namen, Zitate, Begründungen, Beispiele, Einschränkungen, Wertungen des Autors. Nach dem Umschreiben wird die Liste abgeglichen. Fehlt etwas, kommt es zurück, auch wenn der Text dadurch länger wird.
+**Das Inventar.** Vor dem ersten neuen Satz listet der Redakteur die Substanz des Originals: Zahlen, Namen, Zitate, Begründungen, Beispiele, Einschränkungen, Wertungen des Autors. Nach dem Umschreiben geht er die Liste durch. Fehlt etwas, kommt es zurück, auch wenn der Text dadurch länger wird.
 
-**Die Stilistik.** [`references/stilistik.md`](skills/tacheles/references/stilistik.md) bringt die deutsche Stilistik und Textlinguistik mit der Forschung zu KI-Texten zusammen: thematische Progression nach Daneš, Vorfeldbesetzung, Wiederaufnahme statt Konnektoren, Behaghels Gesetze, Bildfelder nach Weinrich. Daraus werden vierzehn Prinzipien mit Arbeitsanweisungen und eine Prüfliste aus sieben Fragen. [`references/textsorten.md`](skills/tacheles/references/textsorten.md) sagt, was Nachricht, Bericht, Reportage, Kommentar und Glosse verlangen, belegt mit den Hausregeln von dpa und Spiegel und mit Passagen aus preisgekrönten Texten.
+**Die Stilistik.** [`references/stilistik.md`](skills/tacheles/references/stilistik.md) bringt die deutsche Stilistik und Textlinguistik mit der Forschung zu KI-Texten zusammen: thematische Progression nach Daneš, Vorfeldbesetzung, Wiederaufnahme statt Konnektoren, Behaghels Gesetze, Bildfelder nach Weinrich. Daraus entstehen vierzehn Prinzipien mit Arbeitsanweisungen und eine Prüfliste aus acht Fragen. Was die einzelne Textsorte verlangt, steht in [`references/textsorten.md`](skills/tacheles/references/textsorten.md): Nachricht, Bericht, Reportage, Kommentar, Glosse. Belegt ist jede Regel: mit den Hausregeln von dpa und Spiegel, mit Passagen aus preisgekrönten Texten.
 
 **Die Messung.** [`scripts/messen.py`](skills/tacheles/scripts/messen.py) prüft das Ergebnis gegen die Stufe und gegen das Original:
 
@@ -106,15 +106,15 @@ VERSTÖSSE (8)
   …
 ```
 
-Gemessen werden Satzlängen, Flesch-Amstad, Wiener Sachtextformel, LIX, Passiv, Nominalstil, Streckverben, Verbklammern, rund 725 Floskeln und Struktur-Tells wie Gedankenstrich-Inflation, Fazit-Absätze oder Überschriften als Frage. Dazu drei Stilistik-Werte: Anteil der Sätze mit Subjekt im Vorfeld, Streuung der Satzlängen, additive Konnektoren am Satzanfang. Mit `--vergleich original.txt` prüft das Skript, ob Zahlen, Zitate, Adressen und Namen noch da sind und ob der Text unter 60 Prozent der Originallänge gefallen ist. Verstöße werden nachgebessert, Hinweise sind Redakteurssache.
+Das Skript misst Satzlängen, Flesch-Amstad, Wiener Sachtextformel, LIX, Passiv, Nominalstil, Streckverben, Verbklammern, rund 725 Floskeln und Struktur-Tells wie Gedankenstrich-Inflation, Fazit-Absätze oder Überschriften als Frage. Dazu kommen vier Stilistik-Befunde: Anteil der Sätze mit Subjekt im Vorfeld, Streuung der Satzlängen, additive Konnektoren am Satzanfang und unbelebte Subjekte mit Verben der Absicht („Die Studie fordert“). Mit `--vergleich original.txt` prüft das Skript, ob Zahlen, Zitate, Adressen und Namen noch da sind und ob der Text unter 60 Prozent der Originallänge gefallen ist. Verstöße bessert das Skill nach; über Hinweise entscheidet der Redakteur.
 
 Die Floskelliste ist geteilt: Was nie Information trägt, ist ein Verstoß. Was im Kontext richtig sein kann, etwa „nachhaltig“ als ökologischer Begriff oder ein einzelnes „zudem“, ist ein Hinweis. Sie stützt sich auf die Wikipedia-Projektseiten zu KI-Texten, deutsche Lektoratslisten und die beiden empirischen Studien zu deutschen KI-Texten (Juzek 2026; Irrgang u. a. 2024).
 
 ## Was es nicht tut
 
 - Es kürzt nicht auf Quote. Ein Ergebnis unter 60 Prozent der Originallänge gilt als verdächtig.
-- Es erfindet nichts. Fehlende Werte werden mit `[PRÜFEN: …]` markiert.
-- Es übersetzt nicht und jagt keine etablierten Fachtermini.
+- Es erfindet nichts. Fehlt ein Wert, steht `[PRÜFEN: …]` an seiner Stelle.
+- Es übersetzt nicht. Etablierte Fachbegriffe bleiben stehen.
 - Es karikiert keinen Autor. Ein Stil ist Satzbau und Haltung, keine Sammlung von Manierismen.
 - Es formatiert nicht auf: keine Emoji, keine Fettwüsten, keine Überschriften als Frage.
 
@@ -133,7 +133,7 @@ skills/tacheles/
     ├── floskeln.txt          die Wortliste, gemeinsame Quelle für Skill und Skript
     ├── probe.md              die Vorlage, an der alle Stufen und Stile gezeigt werden
     └── stile/                acht Stilprofile
-tests/                        39 Tests, ohne Abhängigkeiten
+tests/                        43 Tests, ohne Abhängigkeiten
 ```
 
 ## Das Messskript allein benutzen
@@ -144,7 +144,7 @@ python3 skills/tacheles/scripts/messen.py --stufe 4 --stil fontane neu.md --verg
 python3 skills/tacheles/scripts/messen.py --json text.md
 ```
 
-Rückgabewert 0 ohne Verstöße, 1 mit Verstößen, damit es in Vorlagen für Redaktionssysteme oder in eine CI passt. Alle Werte sind Heuristiken ohne Wörterbuch; das Skript ersetzt keinen Redakteur, es zeigt ihm, wo er hinsehen muss.
+Der Rückgabewert ist 0 ohne Verstöße und 1 mit Verstößen; so lässt es sich in einen Git-Hook hängen oder in eine CI. Alle Werte sind Heuristiken ohne Wörterbuch; das Skript ersetzt keinen Redakteur, es zeigt ihm, wo er hinsehen muss.
 
 ## Einen eigenen Stil ergänzen
 
@@ -171,7 +171,7 @@ Zwei Absätze: Wie klingt der Stil, und wofür taugt er?
 ## Quellen
 ```
 
-Die Schwellen im Kopf haben Vorrang vor denen der Stufe; das Skript übernimmt sie mit `--stil rilke`. Wichtig sind die Karikatur-Fallen: Sie halten das Ergebnis davon ab, eine Parodie zu werden. Belege für die Regeln gehören unter Quellen, damit nachprüfbar bleibt, warum eine Regel dasteht. Die Tests prüfen jedes neue Profil auf Aufbau und plausible Schwellen:
+Die Schwellen im Kopf haben Vorrang vor denen der Stufe; das Skript übernimmt sie mit `--stil rilke`. Wichtig sind die Karikatur-Fallen: Sie verhindern, dass aus dem Stil eine Parodie wird. Belege für die Regeln gehören unter Quellen, damit nachprüfbar bleibt, warum eine Regel dasteht. Die Tests prüfen jedes neue Profil auf Aufbau und plausible Schwellen:
 
 ```bash
 python3 -m unittest discover -s tests
@@ -179,7 +179,17 @@ python3 -m unittest discover -s tests
 
 ## Quellen
 
-Wolf Schneider, *Deutsch für Profis*, *Deutsch fürs Leben*, *Deutsch für junge Profis* · Eduard Engel, *Deutsche Stilkunst* · Ludwig Reiners, *Stilkunst* · Hans-Werner Eroms, *Stil und Stilistik* · Barbara Sandig, *Textstilistik des Deutschen* · Klaus Brinker, *Linguistische Textanalyse* · František Daneš (thematische Progression) · Otto Behaghel, *Deutsche Syntax* · Harald Weinrich (Bildfeld) · Peter Linden, *Duden Handbuch Stilsicher schreiben* · Spiegel-Standards · dpa-Handbuch · Reporter-Forum · Reinhart u. a. 2025, *Do LLMs write like humans?* · Yang u. a. 2024 (thematische Progression in KI-Texten) · Arthur Schopenhauer, *Über Schriftstellerei und Stil* · Friedrich Nietzsche, *Zur Lehre vom Stil* · Kurt Tucholsky, *Ratschläge für einen schlechten Redner* · Langer, Schulz von Thun, Tausch, *Sich verständlich ausdrücken* · DIN SPEC 33429, Netzwerk Leichte Sprache, Klartext-Initiative Hohenheim, Bundesverwaltungsamt *Bürgernahe Verwaltungssprache* · Amstad 1978, Bamberger/Vanecek 1984 (Wiener Sachtextformel), Björnsson (LIX) · Juzek 2026, *AI-Associated Lexical Shifts Across 34 Languages* · Irrgang u. a. 2024, *Features and Detectability of German Texts Generated with LLMs* · Wikipedia, *Anzeichen für KI-generierte Inhalte* · Blomqvist 2004, *Der Fontane-Ton* · Kundera, *Verratene Vermächtnisse* (zu Kafka).
+**Stillehren.** Wolf Schneider, *Deutsch für Profis*, *Deutsch fürs Leben*, *Deutsch für junge Profis* · Eduard Engel, *Deutsche Stilkunst* · Ludwig Reiners, *Stilkunst* · Arthur Schopenhauer, *Über Schriftstellerei und Stil* · Friedrich Nietzsche, *Zur Lehre vom Stil* · Kurt Tucholsky, *Ratschläge für einen schlechten Redner* · Peter Linden, *Duden Handbuch Stilsicher schreiben*.
+
+**Stilistik und Textlinguistik.** Hans-Werner Eroms, *Stil und Stilistik* · Barbara Sandig, *Textstilistik des Deutschen* · Klaus Brinker, *Linguistische Textanalyse* · František Daneš zur thematischen Progression · Otto Behaghel, *Deutsche Syntax* · Harald Weinrich zum Bildfeld.
+
+**Journalismus.** Spiegel-Standards · dpa-Handbuch · Reporter-Forum, Jurybegründungen und Fragebögen.
+
+**Verständlichkeit.** Langer, Schulz von Thun, Tausch, *Sich verständlich ausdrücken* · DIN SPEC 33429 · Netzwerk Leichte Sprache · Klartext-Initiative der Universität Hohenheim · Bundesverwaltungsamt, *Bürgernahe Verwaltungssprache* · Amstad 1978 · Bamberger und Vanecek 1984 zur Wiener Sachtextformel · Björnsson zum LIX.
+
+**Forschung zu KI-Texten.** Reinhart u. a. 2025, *Do LLMs write like humans?* · Yang u. a. 2024 zur thematischen Progression in KI-Texten · Juzek 2026, *AI-Associated Lexical Shifts Across 34 Languages* · Irrgang u. a. 2024, *Features and Detectability of German Texts Generated with LLMs* · Wikipedia, *Anzeichen für KI-generierte Inhalte*.
+
+**Zu einzelnen Stilen.** Blomqvist 2004, *Der Fontane-Ton* · Milan Kundera, *Verratene Vermächtnisse*, zu Kafka.
 
 Was sich nicht belegen ließ, ist in den Referenzdateien als unsicher markiert.
 

@@ -10,7 +10,7 @@ Die Reihenfolge ist die Reihenfolge der Arbeit: erst der Gedanke, dann der Satz,
 
 **Einen Leser vor Augen haben.** Nietzsches „Gesetz der doppelten Relation“: Der Stil passt zum Schreiber und zu einer bestimmten Person, der man sich mitteilen will. Die Stufe ist die Antwort auf die Frage, wer liest. Jedes Wort wird an diesem Leser gemessen: Kennt er es? Braucht er es?
 
-**Objektiv schreiben.** Die Wörter so stellen, dass der Leser genau dasselbe denken muss wie der Autor. Jedes „dies“, „es“, „dieser“ hat genau einen möglichen Bezug. Jede Voraussetzung ist ausgesprochen.
+**Objektiv schreiben.** Die Wörter so stellen, dass der Leser genau dasselbe denken muss wie der Autor. Jedes „dies“, „es“, „dieser“ hat genau einen möglichen Bezug. Jede Voraussetzung ist ausgesprochen. Das gilt auch für den bestimmten Artikel vor einem abstrakten Substantiv: „die Begründung“, „die Lösung“, „der Mehrwert“, „die Herausforderung“ – welche, welcher? Hat der Leser den Bezug noch nicht gelesen, gehört an die Stelle der Fall statt des Begriffs: nicht „bis die Begründung fehlt“, sondern „bis aus ‚Wir empfehlen A, weil nur A die Daten im Haus behält‘ ein ‚Wir empfehlen A‘ geworden ist“.
 
 **Streichen, was der Leser ohnehin denkt.** „Immer noch besser, etwas Gutes wegzulassen, als etwas Nichtssagendes hinzuzusetzen.“ Aber nur das. Begründung, Beispiel, Einschränkung und Zahl denkt der Leser nicht von selbst.
 

@@ -1,10 +1,19 @@
 {
   "name": "tacheles",
   "description": "Redigiert deutsche Texte wie ein erfahrener Redakteur: Slop raus, Substanz bleibt. Fünf Stufen von einfach bis elaboriert, optional im Stil eines deutschen Autors.",
-  "version": "1.0.0",
-  "author": { "name": "ur-grue" },
+  "version": "1.1.0",
+  "author": {
+    "name": "ur-grue"
+  },
   "homepage": "https://github.com/ur-grue/tacheles",
   "repository": "https://github.com/ur-grue/tacheles",
   "license": "MIT",
-  "keywords": ["deutsch", "lektorat", "stil", "anti-slop", "schreiben", "redaktion"]
+  "keywords": [
+    "deutsch",
+    "lektorat",
+    "stil",
+    "anti-slop",
+    "schreiben",
+    "redaktion"
+  ]
 }
