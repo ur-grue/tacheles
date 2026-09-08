@@ -94,6 +94,20 @@ class SlopErkennung(unittest.TestCase):
         treffer = [b for b in m.befunde if "Handlungsträger" in b.text]
         self.assertEqual(len(treffer), 2, [b.text for b in m.befunde])
 
+    def test_handlungstraeger_auch_im_singular(self):
+        """Wörter auf -ung, -ion und -nis müssen im Singular treffen, nicht nur im Plural."""
+        for satz in ("Die Entscheidung entsteht im Ausschuss.",
+                     "Die Untersuchung fordert mehr Personal.",
+                     "Die Diskussion will eine Antwort.",
+                     "Die Erkenntnis reift langsam."):
+            m = miss(satz)
+            self.assertTrue([b for b in m.befunde if "Handlungsträger" in b.text], satz)
+
+    def test_daten_duerfen_entstehen(self):
+        """„Daten entstehen“ versteckt keinen Handelnden und ist richtiges Deutsch."""
+        m = miss("Daten entstehen bei jeder Messung. Die Kosten steigen weiter.")
+        self.assertEqual([b for b in m.befunde if "Handlungsträger" in b.text], [])
+
     def test_software_darf_messen(self):
         """Ein Werkzeug, das wirklich misst und prüft, ist kein falscher Handlungsträger."""
         m = miss("Das Skript misst die Satzlänge. Das Tool erkennt Duplikate und prüft die Quellen.")

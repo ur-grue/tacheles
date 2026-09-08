@@ -85,7 +85,7 @@ Drei Dinge unterscheiden das Skill von einem gewöhnlichen Anti-Slop-Prompt.
 
 **Das Inventar.** Vor dem ersten neuen Satz listet der Redakteur die Substanz des Originals: Zahlen, Namen, Zitate, Begründungen, Beispiele, Einschränkungen, Wertungen des Autors. Nach dem Umschreiben geht er die Liste durch. Fehlt etwas, kommt es zurück, auch wenn der Text dadurch länger wird.
 
-**Die Stilistik.** [`references/stilistik.md`](skills/tacheles/references/stilistik.md) bringt die deutsche Stilistik und Textlinguistik mit der Forschung zu KI-Texten zusammen: thematische Progression nach Daneš, Vorfeldbesetzung, Wiederaufnahme statt Konnektoren, Behaghels Gesetze, Bildfelder nach Weinrich. Daraus entstehen vierzehn Prinzipien mit Arbeitsanweisungen und eine Prüfliste aus sieben Fragen. Was die einzelne Textsorte verlangt, steht in [`references/textsorten.md`](skills/tacheles/references/textsorten.md): Nachricht, Bericht, Reportage, Kommentar, Glosse. Belegt ist jede Regel: mit den Hausregeln von dpa und Spiegel, mit Passagen aus preisgekrönten Texten.
+**Die Stilistik.** [`references/stilistik.md`](skills/tacheles/references/stilistik.md) bringt die deutsche Stilistik und Textlinguistik mit der Forschung zu KI-Texten zusammen: thematische Progression nach Daneš, Vorfeldbesetzung, Wiederaufnahme statt Konnektoren, Behaghels Gesetze, Bildfelder nach Weinrich. Daraus entstehen vierzehn Prinzipien mit Arbeitsanweisungen und eine Prüfliste aus acht Fragen. Was die einzelne Textsorte verlangt, steht in [`references/textsorten.md`](skills/tacheles/references/textsorten.md): Nachricht, Bericht, Reportage, Kommentar, Glosse. Belegt ist jede Regel: mit den Hausregeln von dpa und Spiegel, mit Passagen aus preisgekrönten Texten.
 
 **Die Messung.** [`scripts/messen.py`](skills/tacheles/scripts/messen.py) prüft das Ergebnis gegen die Stufe und gegen das Original:
 
@@ -106,7 +106,7 @@ VERSTÖSSE (8)
   …
 ```
 
-Das Skript misst Satzlängen, Flesch-Amstad, Wiener Sachtextformel, LIX, Passiv, Nominalstil, Streckverben, Verbklammern, rund 725 Floskeln und Struktur-Tells wie Gedankenstrich-Inflation, Fazit-Absätze oder Überschriften als Frage. Dazu kommen drei Stilistik-Werte: Anteil der Sätze mit Subjekt im Vorfeld, Streuung der Satzlängen, additive Konnektoren am Satzanfang. Mit `--vergleich original.txt` prüft das Skript, ob Zahlen, Zitate, Adressen und Namen noch da sind und ob der Text unter 60 Prozent der Originallänge gefallen ist. Verstöße bessert das Skill nach; über Hinweise entscheidet der Redakteur.
+Das Skript misst Satzlängen, Flesch-Amstad, Wiener Sachtextformel, LIX, Passiv, Nominalstil, Streckverben, Verbklammern, rund 725 Floskeln und Struktur-Tells wie Gedankenstrich-Inflation, Fazit-Absätze oder Überschriften als Frage. Dazu kommen vier Stilistik-Befunde: Anteil der Sätze mit Subjekt im Vorfeld, Streuung der Satzlängen, additive Konnektoren am Satzanfang und unbelebte Subjekte mit Verben der Absicht („Die Studie fordert“). Mit `--vergleich original.txt` prüft das Skript, ob Zahlen, Zitate, Adressen und Namen noch da sind und ob der Text unter 60 Prozent der Originallänge gefallen ist. Verstöße bessert das Skill nach; über Hinweise entscheidet der Redakteur.
 
 Die Floskelliste ist geteilt: Was nie Information trägt, ist ein Verstoß. Was im Kontext richtig sein kann, etwa „nachhaltig“ als ökologischer Begriff oder ein einzelnes „zudem“, ist ein Hinweis. Sie stützt sich auf die Wikipedia-Projektseiten zu KI-Texten, deutsche Lektoratslisten und die beiden empirischen Studien zu deutschen KI-Texten (Juzek 2026; Irrgang u. a. 2024).
 
@@ -133,7 +133,7 @@ skills/tacheles/
     ├── floskeln.txt          die Wortliste, gemeinsame Quelle für Skill und Skript
     ├── probe.md              die Vorlage, an der alle Stufen und Stile gezeigt werden
     └── stile/                acht Stilprofile
-tests/                        39 Tests, ohne Abhängigkeiten
+tests/                        43 Tests, ohne Abhängigkeiten
 ```
 
 ## Das Messskript allein benutzen
