@@ -66,13 +66,13 @@ Ein Stil ist die Stimme eines Autors, übertragen auf Sachtexte. Jedes Profil ha
 
 Arbeite immer in dieser Reihenfolge. Die Reihenfolge ist der Grund, warum das Ergebnis zuverlässig ist: Das Inventar schützt die Substanz, die Messung schützt die Form.
 
-**1. Parameter festlegen.** Stufe, Stil, Text. Bei Unklarheit den wahrscheinlichsten Fall wählen und in der Notiz nennen, nicht nachfragen.
+**1. Parameter festlegen.** Stufe, Stil, Text, und die **Textsorte**: Nachricht, Bericht, Reportage, Kommentar, Glosse, Essay, E-Mail, Anleitung (`references/textsorten.md` sagt, was jede verlangt). Bei Unklarheit den wahrscheinlichsten Fall wählen und in der Notiz nennen, nicht nachfragen.
 
 **2. Lesen und Inventar anlegen.** Vor dem ersten neuen Satz: Was will der Text, wer liest ihn, was muss er wissen? Dann eine Liste der Substanz: alle Zahlen, Namen, Daten, Zitate, Quellen; jede Begründung („weil“, „da“, „deshalb“); jedes Beispiel; jede echte Einschränkung; jede Wertung des Autors; jede Formulierung, die nach ihm klingt. Bei Texten über etwa 300 Wörter schreibst du das Inventar in eine Datei im Arbeitsverzeichnis, damit es beim Abgleich in Schritt 6 nicht aus dem Gedächtnis kommen muss; darunter reicht es im Kopf.
 
 **3. Diagnose.** Lies `references/slop.md`, wenn du es in dieser Konversation noch nicht getan hast. Markiere im Original die Muster, die du siehst: Floskeln, Bedeutungsbehauptungen, Nominalketten, Passiv ohne Grund, Binärkontraste, Metakommentare, Rhythmus-Tells, Formatierungs-Tells. Das ist Redakteursarbeit, keine Ausgabe; nur bei langen Texten wird die Diagnose Teil der Analyse-Stufe.
 
-**4. Umschreiben.** Nach `references/stufen.md` für die Stufe, nach `references/redakteur.md` für das Handwerk und nach dem Stilprofil, falls eines gewählt ist. Schreibe den ganzen Text neu, Satz für Satz, Absatz für Absatz, lückenlos. Keine Platzhalter wie „[Rest unverändert]“.
+**4. Umschreiben.** Nach `references/stufen.md` für die Stufe, nach `references/redakteur.md` für das Handwerk am Satz und Wort, nach `references/stilistik.md` für das, was den Text als Ganzes menschlich macht (Verkettung der Sätze, wechselndes Vorfeld, Streuung, Konkretion, Standpunkt), und nach dem Stilprofil, falls eines gewählt ist. Lies `stilistik.md` beim ersten Einsatz in einer Konversation; die Floskelliste fängt Slop, diese Datei verhindert, dass ein floskelfreier Text trotzdem generisch klingt. Schreibe den ganzen Text neu, Satz für Satz, Absatz für Absatz, lückenlos. Keine Platzhalter wie „[Rest unverändert]“.
 
 **5. Messen.** Schreib Original und Ergebnis in Dateien und miss:
 
@@ -82,11 +82,11 @@ python3 ${CLAUDE_SKILL_DIR}/scripts/messen.py --stufe N [--stil NAME] --vergleic
 
 Das Skript meldet **Verstöße** (Satzlänge, Floskeln, Nominal- und Passivdichte, Streckverben, fehlende Zahlen und Zitate, Überkürzung) und **Hinweise** (Passiv-Verdacht, Modewörter im Kontext, Rhythmus, Namen). Verstöße behebst du und misst erneut; nach spätestens zwei Nachbesserungsrunden ist Schluss. Hinweise prüfst du mit Redakteursblick, ohne Pflicht zur erneuten Messung: Ein Fachbegriff, ein begründetes Passiv, ein bewusst gesetzter Rhythmus, ein Wort des Autors dürfen bleiben. Bleibt ein Verstoß, den du für richtig hältst, nenne ihn in der Notiz mit Grund. Wortzahlen in der Notiz sind die des Skripts (es zählt Wörter mit Buchstaben, keine Ziffern und kein Markdown).
 
-**6. Substanzabgleich.** Gehe das Inventar aus Schritt 2 durch. Fehlt etwas, füge es wieder ein, auch wenn der Text dadurch länger wird. Dann noch einmal lesen: Klingt es nach dem Autor oder nach einem Protokoll? Bei Protokollverdacht eine erhaltene Formulierung des Originals zurückholen und den Rhythmus variieren.
+**6. Stilprüfung und Substanzabgleich.** Erst die sieben Fragen der Stilprüfung am Ende von `references/stilistik.md`, Absatz für Absatz: Textsorte erkennbar, Sätze verkettet, Vorfeld wechselnd, Längen gestreut, ein konkretes Datum je Absatz, Konnektoren nur mit Logik, Stimme des Autors hörbar. Jedes Nein ist eine Stelle zum Umbauen. Dann das Inventar aus Schritt 2: Fehlt etwas, füge es wieder ein, auch wenn der Text dadurch länger wird. Klingt der Text nach einem Protokoll, hole eine erhaltene Formulierung des Originals zurück.
 
 **7. Ausgabe.** Erst der Text, vollständig. Dann eine **Redaktionsnotiz** von fünf bis zehn Zeilen: Stufe und Stil; die zwei oder drei dominanten Muster, die du entfernt hast; was du bewusst erhalten hast, obwohl es Slop ähnelte; offene `[PRÜFEN]`-Punkte; eine Zeile Messwerte (Wörter vorher/nachher, mittlere Satzlänge, Verstöße). Keine Kürzungsprozente als Erfolgsmeldung.
 
-`references/probe.md` enthält die Vorlage, an der alle Stufen und Stile ihre Probe zeigen. Sie ist zum Vergleichen da, keine Pflichtlektüre.
+Die Referenzen im Überblick: `stufen.md` (Dichte), `redakteur.md` (Handwerk am Satz und Wort), `stilistik.md` (der Text als Ganzes), `textsorten.md` (was Nachricht, Reportage, Kommentar und die anderen verlangen), `slop.md` und `floskeln.txt` (was raus muss), `stile/` (die Stimmen). `probe.md` enthält die Vorlage, an der alle Stufen und Stile ihre Probe zeigen; sie ist zum Vergleichen da, keine Pflichtlektüre.
 
 ## Lange Texte
 

@@ -68,10 +68,11 @@ Jedes Profil hat operationale Regeln, belegt aus Stilanalysen, dazu Karikatur-Fa
 
 ## Wie es zuverlässig wird
 
-Das Skill arbeitet in einer festen Reihenfolge. Zwei Schritte machen den Unterschied zu einem gewöhnlichen Anti-Slop-Prompt:
+Das Skill arbeitet in einer festen Reihenfolge. Drei Dinge machen den Unterschied zu einem gewöhnlichen Anti-Slop-Prompt:
 
 1. **Das Inventar.** Vor dem ersten neuen Satz listet der Redakteur die Substanz des Originals: Zahlen, Namen, Zitate, Begründungen, Beispiele, Einschränkungen. Nach dem Umschreiben wird die Liste abgeglichen. Fehlt etwas, kommt es zurück, auch wenn der Text länger wird.
-2. **Die Messung.** `scripts/messen.py` prüft das Ergebnis gegen die Stufe und gegen das Original:
+2. **Die Stilistik.** Eine Wortliste fängt Floskeln, aber ein floskelfreier Text kann immer noch generisch klingen: Sätze, die alle mit dem Subjekt beginnen, alle gleich lang sind, nur gereiht statt verkettet, ohne Standpunkt. `references/stilistik.md` bringt die deutsche Stilistik und Textlinguistik (Thema-Rhema-Progression, Vorfeldbesetzung, Wiederaufnahme statt Konnektoren, Behaghels Gesetze, Bildfelder) mit der Forschung zu KI-Texten zusammen und macht daraus vierzehn Prinzipien mit Arbeitsanweisungen. `references/textsorten.md` sagt, was Nachricht, Bericht, Reportage, Kommentar und Glosse verlangen, belegt mit den Hausregeln von dpa und Spiegel und mit Passagen aus preisgekrönten Texten.
+3. **Die Messung.** `scripts/messen.py` prüft das Ergebnis gegen die Stufe und gegen das Original:
 
 ```
 TACHELES · Messung · Stufe 3 (sachlich)
@@ -90,7 +91,7 @@ VERSTÖSSE (8)
   …
 ```
 
-Das Skript misst Satzlängen, Flesch-Amstad, Wiener Sachtextformel, LIX, Passiv, Nominalstil, Streckverben, Verbklammern, Floskeln aus einer Liste mit rund 700 Einträgen und Struktur-Tells (Gedankenstrich-Inflation, Fazit-Absätze, Dreierfiguren, gleich lange Sätze, Überschriften als Frage). Mit `--vergleich original.txt` prüft es, ob Zahlen, Zitate, Adressen und Namen des Originals noch da sind und ob der Text unter 60 Prozent der Originallänge gefallen ist. Verstöße werden nachgebessert, Hinweise sind Redakteurssache.
+Das Skript misst Satzlängen, Flesch-Amstad, Wiener Sachtextformel, LIX, Passiv, Nominalstil, Streckverben, Verbklammern, Floskeln aus einer Liste mit rund 700 Einträgen, Struktur-Tells (Gedankenstrich-Inflation, Fazit-Absätze, Dreierfiguren, Überschriften als Frage) und drei Stilistik-Werte: Anteil der Sätze mit Subjekt im Vorfeld, Streuung der Satzlängen, additive Konnektoren am Satzanfang. Mit `--vergleich original.txt` prüft es, ob Zahlen, Zitate, Adressen und Namen des Originals noch da sind und ob der Text unter 60 Prozent der Originallänge gefallen ist. Verstöße werden nachgebessert, Hinweise sind Redakteurssache.
 
 Die Floskelliste ist in Kategorien geteilt: Was nie Information trägt, ist ein Verstoß. Was im Kontext richtig sein kann („nachhaltig“ als ökologischer Begriff, „zudem“ als einzelner Konnektor), ist ein Hinweis. Die Liste stützt sich auf die Wikipedia-Projektseiten zu KI-Texten, deutsche Lektoratslisten und die einzigen zwei empirischen Studien zu deutschen KI-Texten (Juzek 2026; Irrgang u. a. 2024).
 
@@ -111,6 +112,8 @@ skills/tacheles/
 └── references/
     ├── stufen.md             die fünf Stufen mit Zielwerten und Proben
     ├── redakteur.md          das Handwerk: Engel, Reiners, Schneider, Schopenhauer, Nietzsche, Tucholsky, Kraus
+    ├── stilistik.md          der Text als Ganzes: Verkettung, Vorfeld, Streuung, Konkretion, Standpunkt
+    ├── textsorten.md         Nachricht, Reportage, Kommentar, Glosse: Hausregeln und belegte Beispiele
     ├── slop.md               die Strukturmuster und ihre Gegenstrategien
     ├── floskeln.txt          die Wortliste, gemeinsame Quelle für Skill und Skript
     ├── probe.md              die Vorlage, an der alle Stufen und Stile gezeigt werden
@@ -129,7 +132,7 @@ Rückgabewert 0 ohne Verstöße, 1 mit Verstößen. Alle Werte sind Heuristiken 
 
 ## Quellen
 
-Wolf Schneider, *Deutsch für Profis*, *Deutsch fürs Leben*, *Deutsch für junge Profis* · Eduard Engel, *Deutsche Stilkunst* · Ludwig Reiners, *Stilkunst* · Arthur Schopenhauer, *Über Schriftstellerei und Stil* · Friedrich Nietzsche, *Zur Lehre vom Stil* · Kurt Tucholsky, *Ratschläge für einen schlechten Redner* · Langer, Schulz von Thun, Tausch, *Sich verständlich ausdrücken* · DIN SPEC 33429, Netzwerk Leichte Sprache, Klartext-Initiative Hohenheim, Bundesverwaltungsamt *Bürgernahe Verwaltungssprache* · Amstad 1978, Bamberger/Vanecek 1984 (Wiener Sachtextformel), Björnsson (LIX) · Juzek 2026, *AI-Associated Lexical Shifts Across 34 Languages* · Irrgang u. a. 2024, *Features and Detectability of German Texts Generated with LLMs* · Wikipedia, *Anzeichen für KI-generierte Inhalte* · Blomqvist 2004, *Der Fontane-Ton* · Kundera, *Verratene Vermächtnisse* (zu Kafka).
+Wolf Schneider, *Deutsch für Profis*, *Deutsch fürs Leben*, *Deutsch für junge Profis* · Eduard Engel, *Deutsche Stilkunst* · Ludwig Reiners, *Stilkunst* · Hans-Werner Eroms, *Stil und Stilistik* · Barbara Sandig, *Textstilistik des Deutschen* · Klaus Brinker, *Linguistische Textanalyse* · František Daneš (thematische Progression) · Otto Behaghel, *Deutsche Syntax* · Harald Weinrich (Bildfeld) · Peter Linden, *Duden Handbuch Stilsicher schreiben* · Spiegel-Standards · dpa-Handbuch · Reporter-Forum · Reinhart u. a. 2025, *Do LLMs write like humans?* · Yang u. a. 2024 (thematische Progression in KI-Texten) · Arthur Schopenhauer, *Über Schriftstellerei und Stil* · Friedrich Nietzsche, *Zur Lehre vom Stil* · Kurt Tucholsky, *Ratschläge für einen schlechten Redner* · Langer, Schulz von Thun, Tausch, *Sich verständlich ausdrücken* · DIN SPEC 33429, Netzwerk Leichte Sprache, Klartext-Initiative Hohenheim, Bundesverwaltungsamt *Bürgernahe Verwaltungssprache* · Amstad 1978, Bamberger/Vanecek 1984 (Wiener Sachtextformel), Björnsson (LIX) · Juzek 2026, *AI-Associated Lexical Shifts Across 34 Languages* · Irrgang u. a. 2024, *Features and Detectability of German Texts Generated with LLMs* · Wikipedia, *Anzeichen für KI-generierte Inhalte* · Blomqvist 2004, *Der Fontane-Ton* · Kundera, *Verratene Vermächtnisse* (zu Kafka).
 
 ## Lizenz
 

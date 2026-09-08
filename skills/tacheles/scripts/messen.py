@@ -250,6 +250,8 @@ NICHTNUR_RE = re.compile(r"\bnicht nur\b[^.!?]{0,120}?\bsondern auch\b", re.I)
 FRAGE_ANFANG_RE = re.compile(r"^[^.!?]{3,160}\?\s*$")
 DREIER_RE = re.compile(r"\b(\w+),\s+(\w+)\s+(?:und|oder)\s+(\w+)\b")
 FAZIT_RE = re.compile(r"^\s*(?:\*\*)?(?:fazit|zusammenfassend|zusammenfassung|abschließend|insgesamt lässt sich|alles in allem|unterm strich|zusammengefasst)\b", re.I)
+SUBJEKT_ANFANG_RE = re.compile(r"^(?:Der|Die|Das|Ein|Eine|Dieser|Diese|Dieses|Jeder|Jede|Jedes|Unser|Unsere|Ihr|Ihre|Sein|Seine|Mein|Meine|Wir|Sie|Er|Es|Ich|Man|Viele|Alle|Beide|Einige|Manche|Solche|[A-ZÄÖÜ][a-zäöüß]+(?:-[A-ZÄÖÜa-zäöüß]+)*)\s+(?:[A-ZÄÖÜ][\wäöüß-]*\s+)?(?:ist|sind|war|waren|hat|haben|hatte|hatten|wird|werden|wurde|wurden|kann|können|muss|müssen|soll|sollen|will|wollen|darf|dürfen|bleibt|bleiben|gibt|geben|[a-zäöüß]+(?:t|en|st|e))\b")
+KONNEKTOR_ANFANG_RE = re.compile(r"^(?:Zudem|Außerdem|Darüber hinaus|Des Weiteren|Ferner|Zusätzlich|Ebenso|Weiterhin|Hinzu kommt|Überdies|Auch|Gleichzeitig|Zugleich|Dabei|Daher|Somit|Insbesondere)\b")
 KOLON_TITEL_RE = re.compile(r"^[^:\n]{3,60}:\s+(?:warum|wie|was|wenn|der|die|das|ein|eine)\b", re.I)
 
 
@@ -471,6 +473,18 @@ def messen(rohtext: str, stufe: int, ziele: dict, floskeln: dict[str, list[str]]
         if anfaenge[i] == anfaenge[i + 1] == anfaenge[i + 2] and anfaenge[i] not in ("der", "die", "das", "es", "wir", "sie", "ich"):
             m.befunde.append(Befund("hinweis", f"Sätze {i+1}–{i+3} beginnen alle mit „{anfaenge[i]}“ – Anapher oder Zufall?"))
             break
+    # Stilistik: Vorfeld (Subjekt-Anfänge), Streuung der Satzlängen, Konnektoren am Satzanfang
+    if len(saetze) >= 6:
+        subj = sum(1 for s_ in saetze if SUBJEKT_ANFANG_RE.match(s_))
+        anteil = subj / len(saetze)
+        if anteil > 0.70:
+            m.befunde.append(Befund("hinweis", f"{int(anteil*100)} % der Sätze beginnen mit dem Subjekt – Vorfeld variieren: Zeit, Ort, Bedingung, Kontrast, Wiederaufnahme (stilistik.md 3)"))
+        streuung = statistics.pstdev(laengen) / (sum(laengen) / len(laengen))
+        if streuung < 0.30:
+            m.befunde.append(Befund("hinweis", f"Satzlängen streuen wenig (Variationskoeffizient {streuung:.2f}) – einen kurzen Satz für die Pointe, einen längeren für die Herleitung (stilistik.md 7)"))
+        konn = [s_ for s_ in saetze if KONNEKTOR_ANFANG_RE.match(s_)]
+        if len(konn) / len(saetze) > 0.20:
+            m.befunde.append(Befund("hinweis", f"{len(konn)} von {len(saetze)} Sätzen beginnen mit einem additiven Konnektor – Anschluss durch Wiederaufnahme statt „zudem“ (stilistik.md 5)"))
     dreier = DREIER_RE.findall(text)
     if len(dreier) >= 3 and m.pro100(len(dreier)) > 1.0:
         m.befunde.append(Befund("hinweis", f"{len(dreier)} Dreier-Aufzählungen – trägt jedes dritte Glied eigene Information?"))
