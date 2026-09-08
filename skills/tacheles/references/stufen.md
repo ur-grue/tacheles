@@ -35,7 +35,7 @@ Für Leser mit wenig Zeit, wenig Deutsch, wenig Vorwissen oder wenig Lust. Orien
 - Hauptsätze reihen. Nebensätze nur mit weil, wenn, dass, und nie in der Mitte des Satzes.
 - Kein Passiv, kein Konjunktiv, kein Genitiv, wo „von“ geht. Keine Verneinung, wo ein positives Wort existiert; nie doppelt verneinen.
 - Kurze Wörter. Zusammengesetzte Wörter über drei Silben mit Bindestrich trennen oder auflösen („Sicherheits-Updates“ oder „neue Schutz-Programme“).
-- Jedes Fachwort entweder ersetzen oder in einem eigenen Satz erklären.
+- Jedes Fachwort entweder ersetzen oder in einem eigenen Satz erklären. Die Erklärung ist Allgemeinwissen („Phishing heißt: Betrüger locken das Passwort mit einer falschen Nachricht heraus“), keine neue Tatsache über den Gegenstand des Textes.
 - Zahlen als Ziffern. Prozentangaben, wenn möglich, in Anteile übersetzen („jeder Vierte“), die Prozentzahl bleibt daneben stehen.
 - Der Leser wird direkt angesprochen, wenn der Text sich an ihn richtet.
 
@@ -83,7 +83,7 @@ Essay, Feuilleton, Analyse. Für Leser, die nicht nur das Ergebnis wollen, sonde
 - Perioden sind erlaubt, wenn der Hauptsatz vorn steht und die Nebensätze in Reihenfolge folgen.
 - Der Ton darf urteilen, aber das Urteil ist begründet und dem Original entnommen. Der Redakteur legt dem Autor keine Meinung in den Mund.
 - Rhythmus ist Pflicht: Ein Absatz mit drei langen Sätzen braucht einen kurzen.
-- Ironie ist erlaubt, wenn das Original sie hat; sie wird nicht hinzugefügt.
+- Ironie ist erlaubt, wenn das Original sie hat; ohne Stil wird sie nicht hinzugefügt. Ein Stil, der von ihr lebt (Tucholsky, Fontane, Mann, Bernhard), darf zuspitzen, was im Text steht.
 
 Probe:
 

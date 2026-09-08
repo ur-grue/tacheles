@@ -66,6 +66,8 @@ Der Text kündigt an, was er gleich sagt, oder kommentiert, dass er es gesagt ha
 | „Schätzungen zufolge“, „ein nicht unerheblicher Teil“, „immer mehr Menschen“ | Zahl aus dem Original. Keine Zahl: `[PRÜFEN: Quelle?]` |
 | Erfundene Zitate, Buchtitel, Institutionen | Beim Lektorat: nichts ergänzen, was nicht im Original steht. Verdächtiges markieren. |
 
+Beim Lektorat gilt: Die Aussage bleibt, der Beleg wird angefordert. „Sicherheitsexperten raten zu 2FA“ wird zu „Fachleute raten zu 2FA [PRÜFEN: Wer? Quelle?]“. Gestrichen wird der Scheinbeleg nur, wenn die Aussage ohne ihn nichts mehr sagt („Experten sehen großes Potenzial“).
+
 ## 6. Rhythmus-Tells
 
 Das Modell schreibt gleichmäßig; Menschen schreiben ungleichmäßig.
@@ -102,7 +104,7 @@ Falsche Gewissheit ist der schwerere Fehler als ein Modalverb. Ein Hedge mit Gru
 - Fett und Doppelpunkt als Listenkopf („**Skalierbarkeit:** Das System wächst mit.“), Fettwüsten, gefettete Halbsätze. Höchstens zwei Fettungen je Absatz, und nur für Erstnennungen und entscheidungsrelevante Zahlen.
 - Emoji, Trennlinien, Deko-Blockquotes.
 - Überschriften-Inflation: eine Zwischenüberschrift über zwei Sätzen. Überschrift erst ab etwa 150 Wörtern Abschnitt.
-- Doppelpunkt-Titel („Skalierung: Warum jetzt der richtige Zeitpunkt ist“) und Überschriften als Frage. Überschriften sind Aussagen oder Sachbezeichnungen.
+- Doppelpunkt-Titel mit Enthüllung („Skalierung: Warum jetzt der richtige Zeitpunkt ist“) und Überschriften als Frage. Überschriften sind Aussagen oder Sachbezeichnungen. Ein sachlicher Doppelpunkt („Protokoll: Sitzung vom 3. März“) ist keiner.
 - Title Case im Deutschen („Warum Diese Strategie Funktioniert“).
 - Symmetrische Abschnitte: jeder exakt drei Absätze. Länge folgt Inhalt.
 

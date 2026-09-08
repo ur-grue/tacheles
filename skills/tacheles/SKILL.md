@@ -30,6 +30,7 @@ Diese Regeln gelten auf jeder Stufe und in jedem Stil. Stufe und Stil ändern Sy
 - **Der Handelnde steht im Satz.** Passiv und Nominalstil nur, wenn der Täter unbekannt oder unwichtig ist.
 - **Kein Slop.** Nichts aus `references/floskeln.txt`, kein Muster aus `references/slop.md`. Das gilt auch auf Stufe 5: Elaboriert heißt reich an Gedanken, nicht reich an Wörtern.
 - **Der Autor bleibt hörbar.** Eine eigenwillige Formulierung des Originals ist kein Slop. Slop ist das Generische. Nur ein gewählter Stil darf die Stimme überlagern.
+- **Wertungen des Autors bleiben.** „Wir sind auf einem guten Weg“ ist eine Aussage des Autors, keine Floskel. Sie bleibt, ohne Etikett wie „Fazit:“ davor. Nur der Redakteur fügt keine eigene Wertung hinzu.
 - **Länge folgt Inhalt.** Es gibt keine Kürzungsquote und keine Zielwortzahl. Ein Ergebnis unter 60 Prozent der Originallänge ist verdächtig, nicht verdienstvoll.
 
 ## Die fünf Stufen
@@ -42,13 +43,13 @@ Die Stufe bestimmt, für wen der Text geschrieben ist und wie viel er dem Leser 
 | 2 | klar | Zeitungsleser, Kunden, Kollegen | Ø 9–14, max. 22 | Nachrichtenstil, Hauptsache im Hauptsatz, höchstens ein Nebensatz, Verben statt Substantive |
 | 3 | sachlich | gebildete Laien, Entscheider, Fachkollegen | Ø 12–17, max. 30 | Qualitätsjournalismus und gutes Sachbuch, Nebensätze wo sie Logik tragen, Fachbegriffe konsistent |
 | 4 | ausführlich | Leser, die Herleitung wollen | Ø 15–21, max. 36 | Essay und Analyse, Gegenargumente und Einschränkungen ausformuliert, Perioden erlaubt, wenn sauber gebaut |
-| 5 | elaboriert | Leser, die Sprache genießen | Ø 18–26, max. 50 | literarische oder akademisch gehobene Prosa, Rhythmus, Parenthesen, präzise Fremdwörter, dennoch kein Wort ohne Arbeit |
+| 5 | elaboriert | Leser, die Sprache genießen | Ø 18–30, max. 50 | literarische oder akademisch gehobene Prosa, Rhythmus, Parenthesen, präzise Fremdwörter, dennoch kein Wort ohne Arbeit |
 
 Die Stufe ist keine Längenvorgabe. Stufe 1 erklärt oft mehr Wörter lang als Stufe 3, weil sie jeden Fachbegriff auflöst. Stufe 5 darf lange Sätze bauen, nicht leere.
 
 ## Die Stile
 
-Ein Stil ist die Stimme eines Autors, übertragen auf Sachtexte. Jedes Profil hat operationale Regeln, Karikatur-Fallen und die Probe. Lies das Profil vollständig, bevor du in dem Stil schreibst. Steht die gewünschte Stufe außerhalb der empfohlenen, wende den Stil trotzdem an und nenne die Spannung in der Redaktionsnotiz.
+Ein Stil ist die Stimme eines Autors, übertragen auf Sachtexte. Jedes Profil hat operationale Regeln, Karikatur-Fallen und die Probe. Lies das Profil vollständig, bevor du in dem Stil schreibst. Die Zielwerte im Kopf des Profils haben Vorrang vor denen der Stufe; das Messskript übernimmt sie mit `--stil`. Die Stufe bestimmt dann noch Erklärtiefe, Herleitung und Wortschatz. Ein Stil, der von Ironie oder Zuspitzung lebt, darf beides einsetzen; das Ironieverbot der Stufen gilt nur ohne Stil. Steht die gewünschte Stufe außerhalb der empfohlenen, wende den Stil trotzdem an und nenne die Spannung in der Redaktionsnotiz.
 
 | Name | Autor | Stufen | Kurz |
 |---|---|---|---|
@@ -67,7 +68,7 @@ Arbeite immer in dieser Reihenfolge. Die Reihenfolge ist der Grund, warum das Er
 
 **1. Parameter festlegen.** Stufe, Stil, Text. Bei Unklarheit den wahrscheinlichsten Fall wählen und in der Notiz nennen, nicht nachfragen.
 
-**2. Lesen und Inventar anlegen.** Vor dem ersten neuen Satz: Was will der Text, wer liest ihn, was muss er wissen? Dann eine Liste der Substanz: alle Zahlen, Namen, Daten, Zitate, Quellen; jede Begründung („weil“, „da“, „deshalb“); jedes Beispiel; jede echte Einschränkung; jede Formulierung, die nach dem Autor klingt. Bei Texten über etwa 300 Wörter schreibst du das Inventar in eine Datei im Arbeitsverzeichnis, sonst reicht es im Kopf.
+**2. Lesen und Inventar anlegen.** Vor dem ersten neuen Satz: Was will der Text, wer liest ihn, was muss er wissen? Dann eine Liste der Substanz: alle Zahlen, Namen, Daten, Zitate, Quellen; jede Begründung („weil“, „da“, „deshalb“); jedes Beispiel; jede echte Einschränkung; jede Wertung des Autors; jede Formulierung, die nach ihm klingt. Bei Texten über etwa 300 Wörter schreibst du das Inventar in eine Datei im Arbeitsverzeichnis, damit es beim Abgleich in Schritt 6 nicht aus dem Gedächtnis kommen muss; darunter reicht es im Kopf.
 
 **3. Diagnose.** Lies `references/slop.md`, wenn du es in dieser Konversation noch nicht getan hast. Markiere im Original die Muster, die du siehst: Floskeln, Bedeutungsbehauptungen, Nominalketten, Passiv ohne Grund, Binärkontraste, Metakommentare, Rhythmus-Tells, Formatierungs-Tells. Das ist Redakteursarbeit, keine Ausgabe; nur bei langen Texten wird die Diagnose Teil der Analyse-Stufe.
 
@@ -79,11 +80,13 @@ Arbeite immer in dieser Reihenfolge. Die Reihenfolge ist der Grund, warum das Er
 python3 ${CLAUDE_SKILL_DIR}/scripts/messen.py --stufe N [--stil NAME] --vergleich original.txt ergebnis.txt
 ```
 
-Das Skript meldet **Verstöße** (Satzlänge, Floskeln, Nominal- und Passivdichte, Streckverben, fehlende Zahlen und Zitate, Überkürzung) und **Hinweise** (Passiv-Verdacht, Modewörter im Kontext, Rhythmus). Verstöße behebst du und misst erneut, höchstens zwei Runden. Hinweise prüfst du mit Redakteursblick: Ein Fachbegriff, ein begründetes Passiv, ein bewusst gesetzter Rhythmus dürfen bleiben. Bleibt nach zwei Runden ein Verstoß, den du für richtig hältst, nenne ihn in der Notiz mit Grund.
+Das Skript meldet **Verstöße** (Satzlänge, Floskeln, Nominal- und Passivdichte, Streckverben, fehlende Zahlen und Zitate, Überkürzung) und **Hinweise** (Passiv-Verdacht, Modewörter im Kontext, Rhythmus, Namen). Verstöße behebst du und misst erneut; nach spätestens zwei Nachbesserungsrunden ist Schluss. Hinweise prüfst du mit Redakteursblick, ohne Pflicht zur erneuten Messung: Ein Fachbegriff, ein begründetes Passiv, ein bewusst gesetzter Rhythmus, ein Wort des Autors dürfen bleiben. Bleibt ein Verstoß, den du für richtig hältst, nenne ihn in der Notiz mit Grund. Wortzahlen in der Notiz sind die des Skripts (es zählt Wörter mit Buchstaben, keine Ziffern und kein Markdown).
 
 **6. Substanzabgleich.** Gehe das Inventar aus Schritt 2 durch. Fehlt etwas, füge es wieder ein, auch wenn der Text dadurch länger wird. Dann noch einmal lesen: Klingt es nach dem Autor oder nach einem Protokoll? Bei Protokollverdacht eine erhaltene Formulierung des Originals zurückholen und den Rhythmus variieren.
 
-**7. Ausgabe.** Erst der Text, vollständig. Dann eine **Redaktionsnotiz** von drei bis sechs Zeilen: Stufe und Stil; die zwei oder drei dominanten Muster, die du entfernt hast; was du bewusst erhalten hast, obwohl es Slop ähnelte; offene `[PRÜFEN]`-Punkte; eine Zeile Messwerte (Wörter vorher/nachher, mittlere Satzlänge, Verstöße). Keine Kürzungsprozente als Erfolgsmeldung.
+**7. Ausgabe.** Erst der Text, vollständig. Dann eine **Redaktionsnotiz** von fünf bis zehn Zeilen: Stufe und Stil; die zwei oder drei dominanten Muster, die du entfernt hast; was du bewusst erhalten hast, obwohl es Slop ähnelte; offene `[PRÜFEN]`-Punkte; eine Zeile Messwerte (Wörter vorher/nachher, mittlere Satzlänge, Verstöße). Keine Kürzungsprozente als Erfolgsmeldung.
+
+`references/probe.md` enthält die Vorlage, an der alle Stufen und Stile ihre Probe zeigen. Sie ist zum Vergleichen da, keine Pflichtlektüre.
 
 ## Lange Texte
 

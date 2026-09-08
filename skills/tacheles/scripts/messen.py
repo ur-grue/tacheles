@@ -277,11 +277,20 @@ def floskeln_laden(pfad: str | None = None) -> dict[str, list[str]]:
     return kategorien
 
 
+FLEXION = r"(?:e|en|er|es|em|n|s|ere|eren|erer|eres|erem|ste|sten|ster|stes)?"
+
+
 def phrase_zu_regex(phrase: str) -> re.Pattern:
-    """'…' in der Phrase steht für beliebige 1–5 Wörter. Wortgrenzen außen."""
-    teile = [re.escape(t.strip()) for t in phrase.split("…")]
+    """'…' in der Phrase steht für beliebige 1–5 Wörter. Wortgrenzen außen.
+    Das letzte Wort darf flektiert sein („effizient“ trifft auch „effizienter“), außer es endet auf ein Satzzeichen."""
+    teile = []
+    for t in phrase.split("…"):
+        woerter_ = t.strip().split()
+        esc = [re.escape(w) for w in woerter_]
+        if esc and re.search(r"[\wäöüß]$", woerter_[-1]):
+            esc[-1] = esc[-1] + FLEXION
+        teile.append(r"\s+".join(esc))
     muster = r"(?:\s+\S+){1,5}\s+".join(teile)
-    muster = muster.replace(r"\ ", r"\s+")
     return re.compile(r"(?<![\wäöüß])" + muster + r"(?![\wäöüß])", re.I)
 
 
@@ -448,7 +457,7 @@ def messen(rohtext: str, stufe: int, ziele: dict, floskeln: dict[str, list[str]]
     # Rhythmus: drei gleich lange Sätze, gleiche Satzanfänge, Dreierfiguren
     for i in range(len(laengen) - 2):
         a, b, c = laengen[i: i + 3]
-        if max(a, b, c) - min(a, b, c) <= 1 and a >= 6:
+        if max(a, b, c) - min(a, b, c) <= 1 and a >= 9:
             m.befunde.append(Befund("hinweis", f"Sätze {i+1}–{i+3} sind gleich lang ({a}/{b}/{c} Wörter) – Rhythmus variieren"))
             break
     anfaenge = [woerter(s)[0].lower() for s in saetze if woerter(s)]
@@ -509,7 +518,7 @@ def zahlwoerter_zu_ziffern(text: str) -> str:
     return ZAHLWORT_RE.sub(ersetzen, text)
 
 
-def substanz(original: str, neu: str) -> list[Befund]:
+def substanz(original: str, neu: str, stufe: int = 3) -> list[Befund]:
     befunde: list[Befund] = []
     o = markdown_entfernen(original)
     n = markdown_entfernen(neu)
@@ -521,8 +530,8 @@ def substanz(original: str, neu: str) -> list[Befund]:
         q = wn / wo
         if q < 0.6:
             befunde.append(Befund("verstoss", f"Text auf {int(q*100)} % gekürzt – Begründungen, Beispiele und Einschränkungen prüfen. Kürze ist kein Verdienst."))
-        elif q > 1.5:
-            befunde.append(Befund("hinweis", f"Text auf {int(q*100)} % verlängert – ist alles Neue Substanz aus dem Original?"))
+        elif q > (2.2 if stufe == 1 else 1.5):
+            befunde.append(Befund("hinweis", f"Text auf {int(q*100)} % verlängert – ist alles Neue Substanz aus dem Original oder Erklärung eines Begriffs?"))
 
     fehlende_zahlen = []
     for z in sorted(set(ZAHL_RE.findall(o))):
@@ -544,14 +553,28 @@ def substanz(original: str, neu: str) -> list[Befund]:
     if fehlende_akr:
         befunde.append(Befund("hinweis", f"Eigennamen/Kürzel aus dem Original nicht mehr im Text: {', '.join(fehlende_akr[:15])}"))
 
-    # Namen-Kandidaten: zwei großgeschriebene Wörter hintereinander mitten im Satz
-    # („Müller GmbH“, „Anbieter A“, „Wolf Schneider“). Einzelne Substantive wären zu unscharf.
-    namen = set()
+    # Namen-Kandidaten: zwei großgeschriebene Wörter hintereinander, wenn eines davon nach
+    # Firma, Titel oder Kürzel aussieht („Müller GmbH“, „Frau Dr. Weber“, „Wolf Schneider“ bei
+    # Wiederholung). Zwei beliebige Substantive („das Büro Funktionen erfüllt“) zählen nicht.
+    NAMENSZUSATZ = {"GmbH", "AG", "KG", "SE", "OHG", "eG", "e.V.", "Ltd", "Inc", "Co", "Institut", "Verlag", "Bank",
+                    "Universität", "Hochschule", "Stiftung", "Ministerium", "Behörde", "Amt", "Kommission", "Rat", "Klinik"}
+    TITEL = {"Herr", "Frau", "Dr", "Prof", "Firma", "Präsident", "Präsidentin", "Minister", "Ministerin", "Kanzler",
+             "Kanzlerin", "Bürgermeister", "Bürgermeisterin", "Professor", "Professorin", "Senator", "Senatorin", "Richter",
+             "Richterin", "Region", "Stadt", "Landkreis", "Kanton", "Bundesland", "Anbieter", "Projekt", "Programm", "Modell"}
+    paare: dict[str, int] = {}
     for s_ in saetze_teilen(o):
         ws = woerter(s_)
         for a, b in zip(ws[1:], ws[2:]):
-            if a[0].isupper() and b[0].isupper() and not (a.lower() in ("der", "die", "das") or b.lower() in ("der", "die", "das")):
-                namen.add(f"{a} {b}")
+            if not (a[0].isupper() and b[0].isupper()) or a.lower() in ("der", "die", "das") or b.lower() in ("der", "die", "das"):
+                continue
+            paar = f"{a} {b}"
+            paare[paar] = paare.get(paar, 0) + 1
+    namen = set()
+    for paar, n_ in paare.items():
+        a, b = paar.split(" ", 1)
+        kuerzel = any(re.search(r"[a-zäöüß][A-ZÄÖÜ]|^[A-ZÄÖÜ]{2,}$", t) for t in (a, b))
+        if kuerzel or b in NAMENSZUSATZ or a in TITEL or n_ >= 2:
+            namen.add(paar)
     fehlende_namen = sorted(n_ for n_ in namen if n_.lower() not in n_low and not all(t.lower() in n_low for t in n_.split()))
     if fehlende_namen:
         befunde.append(Befund("hinweis", f"Namen aus dem Original ohne Entsprechung: {', '.join(fehlende_namen[:15])}"))
@@ -674,7 +697,7 @@ def main(argv: list[str] | None = None) -> int:
         except OSError as e:
             print(f"Original nicht lesbar: {e}", file=sys.stderr)
             return 2
-        extra = substanz(original, text)
+        extra = substanz(original, text, a.stufe)
 
     if a.json:
         d = {k: v for k, v in m.__dict__.items() if k != "befunde"}

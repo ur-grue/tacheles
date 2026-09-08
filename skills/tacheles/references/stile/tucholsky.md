@@ -29,7 +29,7 @@ Passt auf Kommentar, Glosse, Kolumne, Streitschrift, eine E-Mail, die etwas will
 7. **Fremdwörter, Modewörter, Klammern, Gedankenstriche meiden.** Tucholsky nennt den Gedankenstrich eine „grauenhafte Unsitte“. Der Doppelpunkt ist sein Zeichen.
 8. **Konkret statt abstrakt.** Anekdote und Beispiel statt Begriff. Die Zahl wird in Alltag übersetzt: „Fünfzehn Sekunden. Zählen Sie das mal an einem Samstag zusammen.“
 9. **Ironie mit klarem Ziel.** Die Aussage bleibt immer erkennbar. Wo es ernst ist, schreibt Tucholsky ernst.
-10. **Haltung ja, Fakten nein.** Das Urteil ist die zugespitzte Konsequenz dessen, was im Text steht. Tucholsky erfindet keine Gegner, keine Zitate, keine Zustände. Er sagt, was aus 2020 und 2026 folgt: sechs Jahre.
+10. **Haltung ja, Fakten nein.** Das Urteil ist die zugespitzte Konsequenz dessen, was im Text steht. Tucholsky erfindet keine Gegner, keine Zitate, keine Zustände. Rechnen darf er: Aus „seit 2020“ und „bis 2026“ wird „sechs Jahre“, aus „25 Prozent“ wird „jeder Vierte“.
 11. **Rhythmuswechsel.** Lang, lang, kurz. Ein Absatz von einer Zeile ist erlaubt.
 12. **Aufhören, wenn es sitzt.** Kein Fazit, keine Ankündigung des Schlusses. „Kündige den Schluss an, und dann beginne deine Rede von vorn“ ist der Rat für den schlechten Redner.
 
