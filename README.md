@@ -25,7 +25,7 @@ Ob das Ergebnis hält, was es verspricht, misst ein Skript nach.
 
 ## Warum
 
-Wer Slop mit einem Prompt bekämpft, bekommt meistens zwei Ergebnisse. Das Modell kürzt den Text, bis die Begründung fehlt, und es ersetzt die alten Floskeln durch neue. Tacheles geht den umgekehrten Weg: Erst zählt es die Substanz des Originals, dann schreibt es um, am Ende misst es nach, ob alles noch da ist. Kürzer wird der Text dabei meistens. Darauf zielt das Verfahren aber nicht.
+Wer Slop mit einem Prompt bekämpft, bekommt meistens zwei Ergebnisse. Das Modell streicht so lange, bis aus „Wir empfehlen Anbieter A, weil nur er die Daten im Haus behält“ ein „Wir empfehlen Anbieter A“ geworden ist. Die Floskeln wiederum ersetzt es durch neue. Tacheles geht den umgekehrten Weg: Erst notiert es, was der Text an Zahlen, Namen und Begründungen enthält, dann schreibt es um, am Ende prüft es, ob alles noch dasteht. Kürzer wird der Text dabei meistens. Darauf zielt das Verfahren aber nicht.
 
 Dazu kommt der zweite Punkt: Floskelfreiheit allein reicht nicht. Ein Text kann jedes Buzzword vermeiden und trotzdem nach Maschine klingen. Das passiert, wenn alle Sätze mit dem Subjekt beginnen, alle gleich lang sind und nur gereiht statt verkettet. Und wenn niemand darin einen Standpunkt hat. Genau da setzt die zweite Prüfung an, mit den Mitteln der deutschen Stilistik und den Befunden der Forschung zu KI-Texten.
 

@@ -143,7 +143,7 @@ Nach dem Umschreiben und nach der Messung, vor dem Substanzabgleich. Acht Fragen
 2. Greift mindestens jeder zweite Satz etwas aus dem Vorsatz auf, statt nur dasselbe Subjekt zu wiederholen?
 3. Beginnen weniger als zwei Drittel der Sätze mit dem Subjekt?
 4. Steht in jedem Absatz ein Satz unter acht Wörtern und einer deutlich über dem Mittel?
-5. Enthält jeder Absatz mindestens ein konkretes Datum: Zahl, Name, Ort, Vorfall, Detail?
+5. Enthält jeder Absatz mindestens ein konkretes Datum: Zahl, Name, Ort, Vorfall, Detail? Und hat jeder bestimmte Artikel vor einem abstrakten Substantiv einen Bezug, den der Leser an dieser Stelle schon kennt?
 6. Trägt jeder Konnektor eine logische Relation, und steht kein „zudem“ am Satzanfang?
 7. Kann jedes Subjekt tun, was sein Verb behauptet? Ein Prompt kürzt nichts, eine Studie fordert nichts, ein Markt belohnt niemanden. Das gilt auch für Pronomen: Worauf verweist „sie“ im nächsten Satz?
 8. Klingt der Text nach dem Autor: Wertung, Ton, eine Eigenheit, die ein Modell nicht geschrieben hätte?
