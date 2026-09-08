@@ -1,0 +1,568 @@
+# tacheles · Floskelliste
+# Eine Phrase pro Zeile. „…“ steht für ein bis fünf beliebige Wörter.
+# Abschnitte in eckigen Klammern. Groß-/Kleinschreibung spielt keine Rolle.
+# Abschnitte, deren Name mit „Füll“ oder „Kontext“ beginnt, erzeugen Hinweise;
+# alle anderen erzeugen Verstöße.
+#
+# Was hier steht, wird nicht ersatzlos gestrichen, sondern durch die Sache ersetzt:
+# Wer? Was genau? Wie viel? Bis wann? Siehe references/slop.md.
+
+[Einstiegsfloskeln]
+in der heutigen … welt
+in der heutigen zeit
+in zeiten von
+in einer welt, in der
+tauchen wir ein
+lassen sie uns … eintauchen
+lassen sie uns gemeinsam
+willkommen in der welt
+stellen sie sich vor
+ganz gleich, ob
+egal, ob sie
+egal ob sie
+wer kennt das nicht
+seit jeher
+schon immer
+im folgenden
+im folgenden wird
+bevor wir … kommen
+werfen wir einen blick
+einen blick werfen
+einen genaueren blick
+lassen sie uns … werfen
+
+[Schlussfloskeln]
+zusammenfassend lässt sich sagen
+zusammenfassend lässt sich festhalten
+zusammenfassend kann man sagen
+abschließend lässt sich sagen
+abschließend lässt sich festhalten
+alles in allem
+unterm strich
+am ende des tages
+letztendlich
+letzten endes
+wie eingangs erwähnt
+wie bereits erwähnt
+wie oben beschrieben
+es bleibt abzuwarten
+die zukunft wird zeigen
+bleibt spannend
+es bleibt spannend
+in diesem sinne
+auf den punkt gebracht
+
+[Bedeutungsbehauptungen]
+spielt eine entscheidende rolle
+spielt eine zentrale rolle
+spielt eine wichtige rolle
+spielt eine wesentliche rolle
+spielt eine große rolle
+spielen eine entscheidende rolle
+spielen eine zentrale rolle
+spielen eine wichtige rolle
+von entscheidender bedeutung
+von zentraler bedeutung
+von großer bedeutung
+von immenser bedeutung
+ist wichtiger denn je
+mehr denn je
+unterstreicht die bedeutung
+unterstreicht die relevanz
+unterstreicht die wichtigkeit
+verdeutlicht die bedeutung
+zeigt die bedeutung
+ist ein zeugnis
+ist ein zeichen für
+ist ein beweis für
+markiert einen wendepunkt
+ist ein meilenstein
+ein echter gamechanger
+ein wahrer gamechanger
+quantensprung
+paradigmenwechsel
+eröffnet neue möglichkeiten
+eröffnet neue perspektiven
+eröffnet neue horizonte
+eröffnen neue möglichkeiten
+wertvolle einblicke
+wertvolle erkenntnisse
+tiefere einblicke
+das volle potenzial
+volles potenzial
+potenzial entfalten
+potenzial ausschöpfen
+das potenzial … zu revolutionieren
+revolutioniert
+revolutionieren
+nicht mehr wegzudenken
+darf nicht unterschätzt werden
+sollte nicht unterschätzt werden
+ist nicht zu unterschätzen
+setzt neue maßstäbe
+neue maßstäbe setzen
+in aller munde
+
+[Metakommentare]
+es ist wichtig zu beachten
+es ist wichtig zu verstehen
+es ist wichtig zu erwähnen
+es ist wichtig zu betonen
+es ist wichtig, zu
+es ist erwähnenswert
+es sei erwähnt
+es sei angemerkt
+es sei darauf hingewiesen
+es gilt zu beachten
+es gilt zu betonen
+es lohnt sich, einen blick
+es lohnt sich
+an dieser stelle
+in diesem zusammenhang
+vor diesem hintergrund
+hier wird deutlich
+man bedenke
+wohlgemerkt
+nicht zu vergessen
+interessanterweise
+bemerkenswerterweise
+erfreulicherweise
+hierbei ist zu beachten
+dabei ist zu beachten
+zu beachten ist
+festzuhalten ist
+festzuhalten bleibt
+es zeigt sich, dass
+es lässt sich festhalten
+es lässt sich sagen
+es steht außer frage
+es steht fest
+fest steht
+es versteht sich von selbst
+selbstverständlich ist
+natürlich ist
+kurz gesagt
+mit anderen worten
+sprich:
+das heißt konkret
+
+[Buzzwords]
+nahtlos
+nahtlose
+nahtlosen
+ganzheitlich
+ganzheitliche
+ganzheitlichen
+ganzheitlicher
+maßgeschneidert
+maßgeschneiderte
+maßgeschneiderten
+zukunftsweisend
+zukunftsweisende
+wegweisend
+wegweisende
+bahnbrechend
+bahnbrechende
+richtungsweisend
+vielschichtig
+vielschichtige
+facettenreich
+facettenreiche
+facettenreichen
+dynamisch … landschaft
+bildungslandschaft
+medienlandschaft
+unternehmenslandschaft
+technologielandschaft
+digitale landschaft
+in der dna
+unsere dna
+synergie
+synergien
+synergieeffekte
+mehrwert schaffen
+echten mehrwert
+einen mehrwert
+effizient und effektiv
+auf augenhöhe
+best practice
+best practices
+lessons learned
+learnings
+quick win
+quick wins
+low hanging fruit
+low-hanging fruits
+deep dive
+auf einer neuen ebene
+nächste level
+nächstes level
+next level
+auf ein neues niveau
+schlüssel zum erfolg
+erfolgsrezept
+ermöglicht es,
+herzblut
+mit herzblut
+atemberaubend
+atemberaubende
+ein bedeutender schritt
+ein entscheidender schritt
+der weg in die zukunft
+über den tellerrand
+das rad neu erfinden
+den nagel auf den kopf
+die spreu vom weizen
+das a und o
+das nonplusultra
+nicht in stein gemeißelt
+entdecke
+eine wichtige rolle
+eine zentrale rolle
+eine entscheidende rolle
+einen wichtigen beitrag
+einen wesentlichen beitrag
+einen entscheidenden beitrag
+einen bedeutenden beitrag
+einen großen beitrag
+beitrag leisten kann
+tragen … bei
+profitieren sie von
+auf ganzer linie
+auf allen ebenen
+in vollem umfang
+in großem umfang
+in erheblichem maße
+in hohem maße
+wesentlich dazu beitragen
+
+[Füllwörter]
+durchaus
+eigentlich
+tatsächlich
+wirklich
+natürlich
+selbstverständlich
+bekanntlich
+zweifellos
+zweifelsohne
+ohne zweifel
+sicherlich
+gewiss
+freilich
+letztlich
+im kern
+im wesentlichen
+im endeffekt
+praktisch
+faktisch
+quasi
+irgendwie
+ein wenig
+ein bisschen
+sehr
+äußerst
+extrem
+absolut
+definitiv
+total
+komplett
+vollkommen
+völlig
+dergestalt
+gleichsam
+regelrecht
+förmlich
+geradezu
+schlichtweg
+schlicht und einfach
+schlicht und ergreifend
+buchstäblich
+im wahrsten sinne des wortes
+nichtsdestotrotz
+nichtsdestoweniger
+in diesem fall
+in diesem kontext
+in diesem sinne
+in gewisser hinsicht
+vor allem auch
+ehrlich gesagt
+offen gesagt
+um ehrlich zu sein
+ich denke
+ich glaube
+ich meine
+ich finde
+meiner meinung nach
+meines erachtens
+für mich
+aus meiner sicht
+
+[Kontext-Hedging]
+könnte durchaus
+könnte möglicherweise
+dürfte tendenziell
+tendenziell eher
+eher tendenziell
+unter umständen
+gegebenenfalls
+möglicherweise
+potenziell
+potenzielle
+potenziellen
+in gewisser weise
+in gewissem maße
+bis zu einem gewissen grad
+mehr oder weniger
+im großen und ganzen
+sozusagen
+gewissermaßen
+quasi
+im grunde genommen
+im grunde
+im prinzip
+prinzipiell
+grundsätzlich
+in der regel
+üblicherweise
+normalerweise
+generell
+typischerweise
+es könnte sein, dass
+es ist möglich, dass
+es besteht die möglichkeit
+nicht ausgeschlossen
+durchaus denkbar
+denkbar wäre
+vorstellbar wäre
+
+[Kontext-Modewörter]
+robust
+robuste
+robusten
+skalierbar
+skalierbare
+agil
+agile
+proaktiv
+proaktive
+proaktiven
+fördert
+fördern
+gewährleisten
+gewährleistet
+ermöglicht es
+ermöglichen es
+optimieren
+optimiert
+optimierung
+leidenschaft
+mit leidenschaft
+lebendig
+lebendige
+lebendigen
+spannend
+spannende
+spannenden
+spannender
+inspirierend
+inspirierende
+beeindruckend
+beeindruckende
+beeindruckenden
+eindrucksvoll
+eindrucksvolle
+einzigartig
+einzigartige
+einzigartigen
+außergewöhnlich
+außergewöhnliche
+hochwertig
+hochwertige
+hochwertigen
+erstklassig
+erstklassige
+umfassend
+umfassende
+umfassenden
+umfangreich
+umfangreiche
+umfangreichen
+effektiv
+effektive
+effektiven
+effizient
+effiziente
+effizienten
+flexibel
+flexible
+flexiblen
+individuell
+individuelle
+individuellen
+nachhaltig
+nachhaltige
+nachhaltigen
+prägt
+prägen
+geprägt von
+geprägt durch
+erkunden
+reise
+auf dieser reise
+landschaft der
+transparent und nachvollziehbar
+zielführend
+beleuchten
+beleuchtet
+beleuchtete
+näher beleuchten
+eintauchen
+eingetaucht
+innovativ
+innovative
+innovativen
+innovativer
+digitale transformation
+verkörpert
+verkörpern
+zeugt von
+zeugen von
+hinsichtlich
+im hinblick auf
+in bezug auf
+sicherstellen, dass
+maßgeblich
+maßgeblichen
+maßgebliche
+tragen dazu bei
+trägt dazu bei
+beitrag leisten
+profitieren von
+profitiert von
+profitieren sie
+nutzen sie
+entdecken sie
+im mittelpunkt stehen
+im fokus stehen
+in den mittelpunkt rücken
+in den fokus rücken
+spiegelt … wider
+spiegeln … wider
+widerspiegelt
+zukunftsfähig
+zukunftssicher
+die zukunft von
+die zukunft der
+die zukunft des
+der richtige weg
+hand in hand
+freude bereiten
+in vollen zügen
+eine reihe von
+verschiedene aspekte
+zahlreiche aspekte
+wichtige aspekte
+auf verschiedenen ebenen
+auf mehreren ebenen
+ganz besonders
+besondere bedeutung
+eine besondere bedeutung
+besonders wichtig
+besonders relevant
+zeitnah
+ein wichtiger schritt
+ein großer schritt
+der erste schritt
+in vielerlei hinsicht
+in jeder hinsicht
+eine vielzahl von
+eine vielzahl an
+vielzahl
+eine breite palette
+ein breites spektrum
+im rahmen von
+im rahmen der
+im rahmen des
+im rahmen einer
+im rahmen eines
+im zuge von
+im zuge der
+im zuge des
+im bereich
+im bereich der
+im bereich des
+sowohl … als auch
+sowohl als auch
+einerseits … andererseits
+auf der einen seite … auf der anderen seite
+ein starkes signal
+ein klares signal
+ein deutliches zeichen
+ein solides fundament
+solide basis
+der grundstein
+den grundstein legen
+das fundament legen
+weichen stellen
+die weichen … gestellt
+schlüsselrolle
+schlüsselfaktor
+der schlüssel
+erfolgsgeschichte
+neu denken
+neu gedacht
+neu definieren
+
+[Kontext-Übergänge]
+darüber hinaus
+des weiteren
+ferner
+zudem auch
+außerdem auch
+zusätzlich dazu
+nicht zuletzt
+insbesondere auch
+vor allem auch
+hervorzuheben ist
+hervorzuheben sind
+besonders hervorzuheben
+nicht nur … sondern auch
+
+[Kontext-Anglizismen]
+meeting
+deadline
+commitment
+mindset
+impact
+skills
+tool
+tools
+performance
+challenge
+feedback
+insights
+know-how
+workflow
+workflows
+onboarding
+stakeholder
+benchmark
+benchmarks
+roadmap
+milestone
+milestones
+setup
+update
+updates
+input
+output
+content
+brand
+branding
+storytelling
+community
+customer journey
+user experience
+touchpoint
+touchpoints

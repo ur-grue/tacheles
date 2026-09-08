@@ -1,0 +1,11 @@
+{
+  "name": "tacheles",
+  "owner": { "name": "ur-grue" },
+  "plugins": [
+    {
+      "name": "tacheles",
+      "source": "./",
+      "description": "Redigiert deutsche Texte wie ein erfahrener Redakteur: Slop raus, Substanz bleibt. Fünf Stufen, optional im Stil eines deutschen Autors."
+    }
+  ]
+}
