@@ -407,10 +407,16 @@ def messen(rohtext: str, stufe: int, ziele: dict, floskeln: dict[str, list[str]]
     m.nominal = len(nominale)
 
     # --- Floskeln und Füllwörter ---
+    belegt: set[tuple[int, int]] = set()   # (Satz, Position) – verhindert Doppelmeldung flektierter Varianten
     for kat, phrasen in floskeln.items():
         for ph in phrasen:
             rx = phrase_zu_regex(ph)
-            treffer = [(i, s) for i, s in enumerate(saetze, 1) if rx.search(s)]
+            treffer = []
+            for i, s in enumerate(saetze, 1):
+                mt = rx.search(s)
+                if mt and (i, mt.start()) not in belegt:
+                    belegt.add((i, mt.start()))
+                    treffer.append((i, s))
             if not treffer:
                 continue
             m.floskeln.setdefault(kat, {})[ph] = len(treffer)
