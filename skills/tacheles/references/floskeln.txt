@@ -102,6 +102,35 @@ ist nicht zu unterschätzen
 setzt neue maßstäbe
 neue maßstäbe setzen
 in aller munde
+steht als zeugnis
+als zeugnis für
+bleibendes vermächtnis
+tief verwurzelt
+fasziniert bis heute
+hinterlässt einen bleibenden eindruck
+bereitet den boden für
+ebnet den weg
+den weg ebnen
+den weg ebnet
+gewinnt zunehmend an bedeutung
+gewinnt immer mehr an bedeutung
+zunehmend an bedeutung
+die zahlen sprechen für sich
+ein wichtiger schritt in die richtige richtung
+ein schritt in die richtige richtung
+spannende zeiten
+die tendenz ist steigend
+reiches kulturelles erbe
+reiche geschichte
+im herzen von
+im herzen der
+integraler bestandteil
+festigt seine position
+festigt ihre position
+prägt bis heute
+nicht nur ein
+mehr als nur
+ist mehr als nur
 
 [Metakommentare]
 es ist wichtig zu beachten
@@ -145,6 +174,28 @@ kurz gesagt
 mit anderen worten
 sprich:
 das heißt konkret
+es liegt auf der hand
+es lässt sich nicht leugnen
+es muss bedacht werden
+um das einzuordnen
+was das besonders interessant macht
+keine diskussion wäre vollständig ohne
+es ist allgemein bekannt
+hand aufs herz
+lass uns ehrlich sein
+lassen sie uns ehrlich sein
+seien wir ehrlich
+das bedeutet konkret
+in anderen worten
+anders ausgedrückt
+was bedeutet das
+was heißt das konkret
+die gute nachricht
+die schlechte nachricht
+der punkt ist
+hier ist der punkt
+und genau das
+genau das macht den unterschied
 
 [Buzzwords]
 nahtlos
@@ -513,6 +564,84 @@ erfolgsgeschichte
 neu denken
 neu gedacht
 neu definieren
+vielversprechend
+vielversprechende
+vielversprechenden
+verstärkt
+sorgfältig
+sorgfältige
+anhaltend
+anhaltende
+zunehmend
+zunehmende
+intensiv
+intensive
+gezielt
+gezielte
+langfristig
+langfristige
+vielfältig
+vielfältige
+vielfältigen
+transparenz
+zusammenhalt
+vielfalt
+herausforderung
+herausforderungen
+bewältigen
+vorantreiben
+voranzutreiben
+eindämmen
+betonen
+betont
+betonte
+hervorheben
+hebt hervor
+hob hervor
+unterstreicht
+unterstrich
+aufzeigen
+zeigt auf
+dient als
+dienen als
+fungiert als
+fungieren als
+verfügt über
+verfügen über
+stellt … dar
+stellen … dar
+markiert
+markieren
+sich konzentrieren auf
+konzentriert sich auf
+maßnahmen ergreifen
+maßnahmen zu ergreifen
+essenziell
+essenzielle
+dynamisch
+dynamische
+dynamischen
+transformativ
+tiefgreifend
+tiefgreifende
+disruptiv
+visionär
+beispiellos
+hochmodern
+immersiv
+vorausschauend
+nuanciert
+akribisch
+mühelos
+reibungslos
+reibungslose
+intuitiv
+intuitive
+datengetrieben
+renommiert
+renommierte
+tief verwurzelte
+im digitalen zeitalter
 
 [Kontext-Übergänge]
 darüber hinaus
@@ -566,3 +695,75 @@ customer journey
 user experience
 touchpoint
 touchpoints
+
+[Scheinbelege]
+studien zeigen
+studien belegen
+studien haben gezeigt
+untersuchungen zeigen
+experten sind sich einig
+experten gehen davon aus
+experten zufolge
+laut experten
+wie experten betonen
+beobachter
+kritiker argumentieren
+kritiker bemängeln
+schätzungen zufolge
+branchenberichte
+branchenberichten zufolge
+es gibt zahlreiche
+ein nicht unerheblicher teil
+viele menschen
+immer mehr menschen
+die meisten menschen
+es ist kein geheimnis
+wie wir alle wissen
+
+[Chatbot-Reste]
+ich hoffe, das hilft
+ich hoffe, dies hilft
+als ki-sprachmodell
+als sprachmodell
+als ki
+wenn du magst, passe ich
+wenn du möchtest, kann ich
+wenn sie möchten, kann ich
+gerne helfe ich
+gerne passe ich
+lass mich wissen
+lassen sie mich wissen
+wunderbare frage
+gute frage
+sehr gute frage
+großartige frage
+stand meines wissens
+meines wissensstandes
+hier ist eine
+hier ist ein
+hier sind einige
+natürlich!
+gerne!
+sicherlich!
+selbstverständlich!
+
+[Kontext-Konnektoren]
+zudem
+insbesondere
+dabei
+daher
+dennoch
+stattdessen
+vielmehr
+weiterhin
+gleichzeitig
+zugleich
+hierbei
+hinzu kommt
+überdies
+gleichwohl
+künftig
+im gegensatz dazu
+ebenso
+außerdem
+zusätzlich

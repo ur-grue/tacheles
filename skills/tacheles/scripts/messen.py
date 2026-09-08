@@ -42,19 +42,28 @@ REFERENZEN = os.path.join(HIER, "..", "references")
 #           nur ein Hinweis, Überschreiten ein Verstoß.
 # satz_max: kein Satz länger als das (Verstoß).
 # lang_anteil: höchstens dieser Anteil der Sätze darf über satz_lang liegen.
-# passiv, nominal: je 100 Wörter (Verstoß bei Überschreitung).
-# flesch_min: Flesch-Reading-Ease nach Amstad, Untergrenze (Verstoß).
+# passiv: höchstens dieser Anteil der Sätze im Passiv (Verstoß).
+# nominal: Nominalisierungen je 100 Wörter (Verstoß). streck, fuell, strich: ebenso.
+# flesch_min: Flesch-Reading-Ease nach Amstad, Untergrenze (Verstoß auf Stufe 1–2,
+#             sonst Hinweis, weil Fachwörter den Wert drücken, ohne den Text zu verschlechtern).
+# wort_lang: Wörter mit mehr Buchstaben werden auf Stufe 1–2 gemeldet.
+#
+# Herkunft der Werte: DIN SPEC 33429 (Leichte Sprache: 8–10 Wörter), Einfache Sprache
+# (max. 14), dpa-Faustregel (9 optimal, 20 erwünscht, 30 hart), Klartext-Initiative
+# Hohenheim (Sätze über 20 Wörter teilen), Messwerte deutscher Medien (Bild 11,6 ·
+# Spiegel 14,7 · FAZ 15,9 Wörter je Satz), wissenschaftliche Prosa (19–29), Passiv-
+# Korpusdaten (Brinker 7 % der Finita, Zeitung ~13 % der Sätze, Fachaufsatz 19–35 %).
 STUFEN = {
-    1: dict(name="einfach", satz_avg=(6, 11), satz_max=15, satz_lang=12, lang_anteil=0.15,
-            passiv=1.0, nominal=2.0, streck=0.0, flesch_min=70, fuell=1.0, strich=0.0),
-    2: dict(name="klar", satz_avg=(9, 14), satz_max=22, satz_lang=18, lang_anteil=0.20,
-            passiv=3.0, nominal=3.0, streck=0.5, flesch_min=60, fuell=1.5, strich=0.5),
+    1: dict(name="einfach", satz_avg=(6, 10), satz_max=14, satz_lang=12, lang_anteil=0.10,
+            passiv=0.05, nominal=1.5, streck=0.0, flesch_min=60, fuell=1.0, strich=0.0, wort_lang=16),
+    2: dict(name="klar", satz_avg=(9, 14), satz_max=22, satz_lang=18, lang_anteil=0.15,
+            passiv=0.10, nominal=2.5, streck=0.5, flesch_min=50, fuell=1.5, strich=0.5, wort_lang=20),
     3: dict(name="sachlich", satz_avg=(12, 17), satz_max=30, satz_lang=24, lang_anteil=0.20,
-            passiv=5.0, nominal=4.0, streck=1.0, flesch_min=50, fuell=2.0, strich=1.0),
-    4: dict(name="ausführlich", satz_avg=(15, 21), satz_max=38, satz_lang=30, lang_anteil=0.25,
-            passiv=6.0, nominal=5.0, streck=1.0, flesch_min=40, fuell=2.0, strich=1.5),
-    5: dict(name="elaboriert", satz_avg=(18, 26), satz_max=50, satz_lang=38, lang_anteil=0.30,
-            passiv=8.0, nominal=6.0, streck=1.5, flesch_min=30, fuell=2.5, strich=2.0),
+            passiv=0.15, nominal=4.0, streck=1.0, flesch_min=40, fuell=2.0, strich=1.0, wort_lang=99),
+    4: dict(name="ausführlich", satz_avg=(15, 21), satz_max=36, satz_lang=30, lang_anteil=0.25,
+            passiv=0.20, nominal=5.0, streck=1.0, flesch_min=30, fuell=2.0, strich=1.5, wort_lang=99),
+    5: dict(name="elaboriert", satz_avg=(18, 30), satz_max=50, satz_lang=38, lang_anteil=0.35,
+            passiv=0.30, nominal=6.0, streck=1.5, flesch_min=20, fuell=2.5, strich=2.0, wort_lang=99),
 }
 
 # ---------------------------------------------------------------------------
@@ -68,6 +77,11 @@ ABKUERZUNGEN = [
     "Jan.", "Feb.", "Mrz.", "Apr.", "Aug.", "Sept.", "Okt.", "Nov.", "Dez.", "o. Ä.", "o.Ä.",
     "i. d. R.", "i.d.R.", "sog.", "bspw.", "geb.", "gest.", "ehem.", "engl.", "dt.", "lat.",
 ]
+
+ORDINAL_FOLGE = (r"Januar|Februar|März|April|Mai|Juni|Juli|August|September|Oktober|November|Dezember|"
+                 r"Jan|Feb|Mrz|Apr|Aug|Sept|Okt|Nov|Dez|Jahrhundert|Jh|Halbjahr|Quartal|Platz|Stock|Auflage|Klasse|Mal|"
+                 r"Sitzung|Tag|Woche|Monat|Kapitel|Absatz|Abschnitt|Teil|Band|Runde|Spieltag|Lebensjahr|Geburtstag|Jahrestag|"
+                 r"Etage|Reihe|Zeile|Satz|Stelle|Position|Liga|Rang|Semester|Ausgabe|Version|Fassung|Generation|Wahlgang|Legislaturperiode")
 
 WORT_RE = re.compile(r"[A-Za-zÄÖÜäöüßéèáàóòúùâêîôû]+(?:[-'][A-Za-zÄÖÜäöüß]+)*")
 ZAHL_RE = re.compile(r"\d+(?:[.,]\d+)*(?:\s?%)?")
@@ -99,7 +113,8 @@ def saetze_teilen(text: str) -> list[str]:
     for abk in ABKUERZUNGEN:
         t = t.replace(abk, abk.replace(".", "․").replace(" ", " "))
     t = re.sub(r"(\d)\.(\d)", r"\1․\2", t)
-    t = re.sub(r"(\d)\.(\s)", r"\1․\2", t)  # "am 3. März", "1. Halbjahr"
+    t = re.sub(r"(\d)\.(\s+)(?=(?:" + ORDINAL_FOLGE + r")\b)", r"\1․\2", t)  # "am 3. März", "im 19. Jahrhundert"
+    t = re.sub(r"(\d)\.(\s+)(?=[a-zäöüß])", r"\1․\2", t)  # "der 2. von links"
     t = re.sub(r"\b([A-ZÄÖÜ])\.\s", r"\1․ ", t)  # Initialen
     absaetze = [a for a in re.split(r"\n\s*\n", t) if a.strip()]
     saetze: list[str] = []
@@ -127,8 +142,12 @@ def silben(wort: str) -> int:
     n = len(gruppen)
     # Häufige Fälle, in denen zwei Vokale zwei Silben sind
     for g in gruppen:
-        if len(g) >= 2 and g not in ("ie", "ei", "ai", "au", "eu", "äu", "ee", "oo", "aa", "ue", "oe", "ae", "ey", "ay", "ui", "ou"):
-            n += len(g) - 1
+        if len(g) >= 3:
+            n += (len(g) + 1) // 2 - 1      # "eue", "aue", "eie": zwei Silben
+        elif len(g) == 2 and g not in ("ie", "ei", "ai", "au", "eu", "äu", "ee", "oo", "aa", "ue", "oe", "ae", "ey", "ay", "ui", "ou"):
+            n += 1                            # "eo", "ea", "io", "ua": Hiatus
+    if w.endswith(("ie", "ien")) and len(w) > 4 and w[-3] not in "aeiouäöü" and w[-4] not in "aeiouäöü":
+        pass                                  # Familie, Linie: Trennregel zählt eine Silbe, Aussprache zwei – bleibt konservativ
     return max(1, n)
 
 
@@ -159,6 +178,28 @@ def passiv_kandidaten(satz: str) -> list[str]:
         if any(WERDEN_RE.fullmatch(v) for v in vorher) or any(WERDEN_RE.fullmatch(v) for v in low[i + 1:i + 3]):
             treffer.append(t)
     return treffer
+
+
+KONJUNKTIV_RE = re.compile(r"\b(?:hätte|hätten|hättest|wäre|wären|wärst|würde|würden|würdest|könnte|könnten|müsste|müssten|sollte|sollten|dürfte|dürften|möchte|möchten|käme|kämen|ginge|gingen|gäbe|wüsste|ließe|bräuchte|stünde|fände|täte)\b", re.I)
+AUX_RE = re.compile(r"^(?:hat|haben|habe|hatte|hatten|ist|sind|war|waren|wird|werden|wurde|wurden|kann|können|konnte|konnten|muss|müssen|musste|mussten|soll|sollen|sollte|sollten|will|wollen|wollte|wollten|darf|dürfen|durfte|mag|möchte|möchten|lässt|lassen|ließ|ließen|hätte|hätten|wäre|wären|würde|würden|könnte|könnten|müsste|müssten)$", re.I)
+VERBENDE_RE = re.compile(r"^(?:\w*ge\w{2,}(?:t|en)|\w{3,}iert|\w{3,}(?:en|ern|eln))$", re.I)
+PARTIZIP_ANHANG_RE = re.compile(r",\s[^,.;:]{0,60}\b\w{5,}end[.!?]?$")
+ALIBI_NACHSATZ_RE = re.compile(r",\s+(?:was|wodurch|womit)\s+[^,.;]{0,60}\b(?:unterstreicht|widerspiegelt|verdeutlicht|zeigt|belegt|beweist|bestätigt|unterstreichen|widerspiegeln|verdeutlichen|zeigen|belegen|bestätigen|eröffnet|eröffnen|ermöglicht|ermöglichen)\b", re.I)
+
+
+def verbklammer(satz: str) -> tuple[int, str, str] | None:
+    """Größter Abstand zwischen Hilfs-/Modalverb und dem Verb am Teilsatzende."""
+    bester = None
+    for teil in re.split(r"[,;:()]", satz):
+        tokens = re.findall(r"[\wäöüÄÖÜß]+", teil)
+        for i, t in enumerate(tokens):
+            if AUX_RE.match(t) and len(tokens) - 1 > i + 1:
+                letzter = tokens[-1]
+                if VERBENDE_RE.match(letzter) and letzter.lower() not in ("wegen", "gegen", "diesen", "seinen", "ihren", "einen", "meinen", "keinen", "denen", "deren", "dessen", "allen", "vielen", "wenigen", "anderen", "neuen", "ersten", "letzten", "eigenen", "beiden", "solchen", "jenen", "ganzen"):
+                    abstand = len(tokens) - 1 - i - 1
+                    if bester is None or abstand > bester[0]:
+                        bester = (abstand, t, letzter)
+    return bester
 
 
 NOMINAL_RE = re.compile(r"\b[A-ZÄÖÜ]\w*(?:ung|ungen|heit|heiten|keit|keiten|ität|itäten|ierung|ierungen|isierung|isierungen)\b")
@@ -336,8 +377,21 @@ def messen(rohtext: str, stufe: int, ziele: dict, floskeln: dict[str, list[str]]
             m.befunde.append(Befund("hinweis", "„nicht nur … sondern auch“ – meist reicht „und“", i, kuerzen(s)))
         elif BINAER_RE.search(s):
             m.befunde.append(Befund("hinweis", "Binärkontrast „nicht X, sondern Y“ – Y direkt sagen", i, kuerzen(s)))
-        if stufe <= 2 and s.count(",") >= 3:
+        if (stufe == 1 and s.count(",") >= 2) or (stufe == 2 and s.count(",") >= 3):
             m.befunde.append(Befund("hinweis", f"{s.count(',')} Kommas – Schachtelsatz-Verdacht", i, kuerzen(s)))
+        if stufe == 1 and KONJUNKTIV_RE.search(s):
+            m.befunde.append(Befund("hinweis", f"Konjunktiv „{KONJUNKTIV_RE.search(s).group(0)}“ – auf Stufe 1 möglichst vermeiden", i, kuerzen(s)))
+        kl = verbklammer(s)
+        if kl and kl[0] > (6 if stufe <= 2 else 9):
+            m.befunde.append(Befund("hinweis", f"Verbklammer: {kl[0]} Wörter zwischen „{kl[1]}“ und „{kl[2]}“ – Klammer schließen oder Nachfeld nutzen", i, kuerzen(s)))
+        if PARTIZIP_ANHANG_RE.search(s):
+            m.befunde.append(Befund("verstoss", "Partizip-Anhängsel am Satzende („…, seine Bedeutung unterstreichend“) – eigener Satz oder streichen", i, kuerzen(s)))
+        if ALIBI_NACHSATZ_RE.search(s):
+            m.befunde.append(Befund("verstoss", "Alibi-Nachsatz („…, was die Bedeutung unterstreicht“) – Bedeutung belegen oder streichen", i, kuerzen(s)))
+        if ziele["wort_lang"] < 99:
+            lange = [w for w in woerter(s) if max(len(t) for t in w.split("-")) > ziele["wort_lang"]]
+            if lange:
+                m.befunde.append(Befund("hinweis", f"Langes Wort: {', '.join(lange[:3])} – trennen, kürzen oder erklären", i))
 
     # --- Nominalstil ---
     nominale = [w for w in NOMINAL_RE.findall(text) if w.lower() not in NOMINAL_AUSNAHMEN]
@@ -414,8 +468,9 @@ def messen(rohtext: str, stufe: int, ziele: dict, floskeln: dict[str, list[str]]
         m.befunde.append(Befund("hinweis", f"Mittlere Satzlänge {m.satz_avg} Wörter liegt unter dem Korridor der Stufe {stufe} ({lo}–{hi}) – Stakkato-Verdacht"))
     if m.satz_lang_anteil > ziele["lang_anteil"] and m.saetze >= 5:
         m.befunde.append(Befund("verstoss", f"{int(m.satz_lang_anteil*100)} % der Sätze länger als {ziele['satz_lang']} Wörter (höchstens {int(ziele['lang_anteil']*100)} %)"))
-    if m.pro100(m.passiv) > ziele["passiv"] and m.saetze >= 5:
-        m.befunde.append(Befund("verstoss", f"Passiv in {m.passiv} Sätzen ({m.pro100(m.passiv)} je 100 Wörter, Stufe {stufe}: höchstens {ziele['passiv']})"))
+    passiv_anteil = m.passiv / m.saetze if m.saetze else 0.0
+    if passiv_anteil > ziele["passiv"] and m.saetze >= 5:
+        m.befunde.append(Befund("verstoss", f"Passiv in {m.passiv} von {m.saetze} Sätzen ({int(passiv_anteil*100)} %, Stufe {stufe}: höchstens {int(ziele['passiv']*100)} %)"))
     if m.pro100(m.nominal) > ziele["nominal"]:
         m.befunde.append(Befund("verstoss", f"{m.nominal} Nominalisierungen ({m.pro100(m.nominal)} je 100 Wörter, Stufe {stufe}: höchstens {ziele['nominal']}): {', '.join(sorted(set(nominale))[:8])}"))
     if m.pro100(m.streck) > ziele["streck"]:
@@ -423,7 +478,7 @@ def messen(rohtext: str, stufe: int, ziele: dict, floskeln: dict[str, list[str]]
     if m.pro100(m.fuellwoerter) > ziele["fuell"]:
         m.befunde.append(Befund("verstoss", f"{m.fuellwoerter} Füllwörter ({m.pro100(m.fuellwoerter)} je 100 Wörter, Stufe {stufe}: höchstens {ziele['fuell']})"))
     if m.flesch < ziele["flesch_min"] and m.woerter >= 60:
-        m.befunde.append(Befund("verstoss", f"Flesch-Amstad {m.flesch} (Stufe {stufe}: mindestens {ziele['flesch_min']}) – kürzere Sätze oder kürzere Wörter"))
+        m.befunde.append(Befund("verstoss" if stufe <= 2 else "hinweis", f"Flesch-Amstad {m.flesch} (Stufe {stufe}: Ziel mindestens {ziele['flesch_min']}) – kürzere Sätze oder kürzere Wörter"))
 
     return m
 
@@ -436,12 +491,30 @@ URL_RE = re.compile(r"https?://\S+|www\.\S+|\b[\w.+-]+@[\w-]+\.[\w.]+\b")
 AKRONYM_RE = re.compile(r"\b(?:[A-ZÄÖÜ]{2,}[a-zäöü]*[A-ZÄÖÜ]*|[A-Za-z]+[A-ZÄÖÜ][a-zäöü]+)\b")
 
 
+ZAHLWOERTER = {"null": 0, "eins": 1, "ein": 1, "eine": 1, "zwei": 2, "drei": 3, "vier": 4, "fünf": 5, "sechs": 6, "sieben": 7,
+               "acht": 8, "neun": 9, "zehn": 10, "elf": 11, "zwölf": 12, "dreizehn": 13, "vierzehn": 14, "fünfzehn": 15,
+               "sechzehn": 16, "siebzehn": 17, "achtzehn": 18, "neunzehn": 19, "zwanzig": 20, "dreißig": 30, "vierzig": 40,
+               "fünfzig": 50, "sechzig": 60, "siebzig": 70, "achtzig": 80, "neunzig": 90, "hundert": 100, "tausend": 1000}
+ZAHLWORT_RE = re.compile(r"\b(?:(?:ein|zwei|drei|vier|fünf|sechs|sieben|acht|neun|zehn|elf|zwölf)und)?(?:zwanzig|dreißig|vierzig|fünfzig|sechzig|siebzig|achtzig|neunzig)\b|\b(?:null|eins|zwei|drei|vier|fünf|sechs|sieben|acht|neun|zehn|elf|zwölf|dreizehn|vierzehn|fünfzehn|sechzehn|siebzehn|achtzehn|neunzehn|hundert|tausend)\b", re.I)
+
+
+def zahlwoerter_zu_ziffern(text: str) -> str:
+    """„fünfundfünfzig“ → „55“, damit der Zahlenabgleich ausgeschriebene Zahlen erkennt."""
+    def ersetzen(m: re.Match) -> str:
+        w = m.group(0).lower()
+        if "und" in w and w not in ZAHLWOERTER:
+            a, b = w.split("und", 1)
+            return str(ZAHLWOERTER.get(a, 0) + ZAHLWOERTER.get(b, 0))
+        return str(ZAHLWOERTER.get(w, w))
+    return ZAHLWORT_RE.sub(ersetzen, text)
+
+
 def substanz(original: str, neu: str) -> list[Befund]:
     befunde: list[Befund] = []
     o = markdown_entfernen(original)
     n = markdown_entfernen(neu)
     n_low = n.lower()
-    n_kompakt = re.sub(r"[\s.,]", "", n_low)
+    n_kompakt = re.sub(r"[\s.,]", "", zahlwoerter_zu_ziffern(n_low))
 
     wo, wn = len(woerter(o)), len(woerter(n))
     if wo:
@@ -506,7 +579,7 @@ def stil_laden(name: str) -> dict:
             continue
         k, v = zeile.split(":", 1)
         k, v = k.strip(), v.strip()
-        if k in ("satz_max", "satz_lang"):
+        if k in ("satz_max", "satz_lang", "wort_lang"):
             werte[k] = int(v)
         elif k in ("passiv", "nominal", "streck", "flesch_min", "fuell", "strich", "lang_anteil"):
             werte[k] = float(v)
@@ -530,7 +603,8 @@ def bericht(m: Messung, ziele: dict, extra: list[Befund], stil: str | None) -> s
     z.append(f"Wörter {m.woerter} · Sätze {m.saetze} · Absätze {m.absaetze}")
     z.append(f"Satzlänge  Ø {m.satz_avg} · Median {m.satz_median:g} · längster {m.satz_max}   (Ziel Ø {lo}–{hi}, kein Satz über {ziele['satz_max']})")
     z.append(f"Lesbarkeit Flesch-Amstad {m.flesch} (Ziel ≥ {ziele['flesch_min']}) · Wiener Sachtextformel {m.wsf} · LIX {m.lix} · Silben/Wort {m.silben_pro_wort}")
-    z.append(f"Passiv {m.passiv} ({m.pro100(m.passiv)}/100, max {ziele['passiv']}) · Nominalisierungen {m.nominal} ({m.pro100(m.nominal)}/100, max {ziele['nominal']}) · Streckverben {m.streck}")
+    pa = int(100 * m.passiv / m.saetze) if m.saetze else 0
+    z.append(f"Passiv {m.passiv} Sätze ({pa} %, max {int(ziele['passiv']*100)} %) · Nominalisierungen {m.nominal} ({m.pro100(m.nominal)}/100, max {ziele['nominal']}) · Streckverben {m.streck}")
     n_fl = sum(v for kat, d in m.floskeln.items() for v in d.values())
     z.append(f"Floskeln/Füllwörter {n_fl} · Gedankenstriche {m.striche}")
     alle = m.befunde + extra

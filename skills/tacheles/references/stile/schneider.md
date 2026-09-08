@@ -5,7 +5,7 @@ stufen: 1-3
 satz_avg: 8–14
 satz_max: 24
 satz_lang: 18
-passiv: 2.0
+passiv: 0.10
 nominal: 2.5
 streck: 0.0
 fuell: 1.0

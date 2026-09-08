@@ -1,6 +1,6 @@
 ---
 name: tacheles
-description: Redigiert deutsche Texte wie ein erfahrener Redakteur – Slop raus, Substanz bleibt, Stil nach Wahl. Verwenden, sobald ein deutscher Text überarbeitet, redigiert, lektoriert, gekürzt, geglättet, „humanisiert“, „entsloppt“, verständlicher, einfacher, klarer, eleganter oder „weniger nach KI“ klingen soll; wenn jemand einen Text „im Stil von“ Wolf Schneider, Tucholsky, Kästner, Kafka, Kleist, Thomas Mann, Fontane oder Bernhard will; wenn eine Stufe zwischen einfach und ausführlich gewünscht ist (auch „Leichte Sprache“, „für Laien“, „für Vorstand“, „für Fachpublikum“); und immer, wenn Claude selbst einen längeren deutschen Sachtext, Artikel, Bericht, Newsletter, Blogpost oder eine wichtige E-Mail schreibt. Aufruf: /tacheles [1-5] [stil] [text oder datei].
+description: Redigiert deutsche Texte wie ein erfahrener Redakteur – Slop raus, Substanz bleibt, Stil nach Wahl. Verwenden, sobald ein deutscher Text überarbeitet, redigiert, lektoriert, gekürzt, geglättet, „humanisiert“, „entsloppt“, verständlicher, einfacher, klarer, eleganter oder „weniger nach KI“ klingen soll; wenn jemand einen Text „im Stil von“ Wolf Schneider, Tucholsky, Kästner, Kisch, Kafka, Fontane, Thomas Mann oder Thomas Bernhard will; wenn eine Stufe zwischen einfach und ausführlich gewünscht ist (auch „Leichte Sprache“, „für Laien“, „für Vorstand“, „für Fachpublikum“); und immer, wenn Claude selbst einen längeren deutschen Sachtext, Artikel, Bericht, Newsletter, Blogpost oder eine wichtige E-Mail schreibt. Aufruf: /tacheles [1-5] [stil] [text oder datei].
 argument-hint: "[Stufe 1-5] [Stil] [Text oder Datei]"
 allowed-tools: Bash(python3 *), Read, Write
 ---
@@ -38,10 +38,10 @@ Die Stufe bestimmt, für wen der Text geschrieben ist und wie viel er dem Leser 
 
 | Stufe | Name | Leser | Satz | Kennzeichen |
 |---|---|---|---|---|
-| 1 | einfach | alle, auch mit wenig Deutsch oder wenig Zeit | Ø 6–11 Wörter, max. 15 | ein Gedanke pro Satz, keine Nebensätze außer weil/wenn/dass, kein Passiv, keine Fremdwörter ohne Erklärung |
+| 1 | einfach | alle, auch mit wenig Deutsch oder wenig Zeit | Ø 6–10 Wörter, max. 14 | ein Gedanke pro Satz, keine Nebensätze außer weil/wenn/dass, kein Passiv, keine Fremdwörter ohne Erklärung |
 | 2 | klar | Zeitungsleser, Kunden, Kollegen | Ø 9–14, max. 22 | Nachrichtenstil, Hauptsache im Hauptsatz, höchstens ein Nebensatz, Verben statt Substantive |
 | 3 | sachlich | gebildete Laien, Entscheider, Fachkollegen | Ø 12–17, max. 30 | Qualitätsjournalismus und gutes Sachbuch, Nebensätze wo sie Logik tragen, Fachbegriffe konsistent |
-| 4 | ausführlich | Leser, die Herleitung wollen | Ø 15–21, max. 38 | Essay und Analyse, Gegenargumente und Einschränkungen ausformuliert, Perioden erlaubt, wenn sauber gebaut |
+| 4 | ausführlich | Leser, die Herleitung wollen | Ø 15–21, max. 36 | Essay und Analyse, Gegenargumente und Einschränkungen ausformuliert, Perioden erlaubt, wenn sauber gebaut |
 | 5 | elaboriert | Leser, die Sprache genießen | Ø 18–26, max. 50 | literarische oder akademisch gehobene Prosa, Rhythmus, Parenthesen, präzise Fremdwörter, dennoch kein Wort ohne Arbeit |
 
 Die Stufe ist keine Längenvorgabe. Stufe 1 erklärt oft mehr Wörter lang als Stufe 3, weil sie jeden Fachbegriff auflöst. Stufe 5 darf lange Sätze bauen, nicht leere.
@@ -54,11 +54,11 @@ Ein Stil ist die Stimme eines Autors, übertragen auf Sachtexte. Jedes Profil ha
 |---|---|---|---|
 | `schneider` | Wolf Schneider | 1–3 | Verben, Einsilber, Hauptsätze, Konkretes. Das Handwerk in Reinform. |
 | `kaestner` | Erich Kästner | 1–3 | Klar, warm, leise ironisch. Sagt schwere Dinge einfach, ohne sie kleinzureden. |
-| `tucholsky` | Kurt Tucholsky | 2–4 | Feuilleton mit Haltung: Pointe, Anrede, Tempo, Zorn mit Witz. |
-| `kafka` | Franz Kafka | 3–4 | Nüchterne Präzision, klare lange Sätze, Kanzleisprache ohne Kanzleigeist. |
-| `fontane` | Theodor Fontane | 3–4 | Plauderton, Understatement, das Beiläufige trägt die Pointe. |
-| `kleist` | Heinrich von Kleist | 4–5 | Die Periode als Spannungsbogen: Hypotaxe, Tempo, das Verb am Ende zündet. |
-| `mann` | Thomas Mann | 4–5 | Ironische Perioden, Parenthesen, Genauigkeit im Nebensatz, Leitmotiv. |
+| `tucholsky` | Kurt Tucholsky | 2–4 | Feuilleton mit Haltung: Hauptsätze, Anrede, Pointe, Zorn mit Witz. |
+| `kisch` | Egon Erwin Kisch | 2–4 | Reportage: Präsens, Szene statt Behauptung, eine Leitmetapher, das Urteil am Schluss. |
+| `kafka` | Franz Kafka | 3–4 | Nüchterne Präzision, lange lineare Sätze, Kanzleisprache ohne Kanzleigeist. |
+| `fontane` | Theodor Fontane | 3–4 | Plauderton, „aber“-Urteile, Understatement; das Beiläufige trägt die Pointe. |
+| `mann` | Thomas Mann | 4–5 | Ironische Perioden, Parenthesen, Leitmotiv, Feierlichkeit leicht unterlaufen. |
 | `bernhard` | Thomas Bernhard | 4–5 | Wiederholung, Übertreibung, der eine lange Atemzug. Für Polemik, nicht für Protokolle. |
 
 ## Verfahren
