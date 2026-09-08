@@ -750,20 +750,13 @@ selbstverständlich!
 [Kontext-Konnektoren]
 zudem
 insbesondere
-dabei
-daher
 dennoch
 stattdessen
 vielmehr
 weiterhin
-gleichzeitig
-zugleich
 hierbei
 hinzu kommt
 überdies
 gleichwohl
-künftig
 im gegensatz dazu
-ebenso
 außerdem
-zusätzlich
