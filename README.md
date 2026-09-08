@@ -1,8 +1,21 @@
+<div align="center">
+
 # tacheles
 
 **Redigiert deutsche Texte wie ein erfahrener Redakteur. Slop raus, Substanz bleibt.**
 
-Ein Skill für [Claude Code](https://claude.com/claude-code). Eine Zahl wählt die Dichte, von 1 (einfach) bis 5 (elaboriert). Ein Name wählt, wenn gewünscht, die Stimme: Wolf Schneider, Kästner, Tucholsky, Kisch, Kafka, Fontane, Thomas Mann, Thomas Bernhard. Ein Messskript prüft das Ergebnis gegen die Zielwerte der Stufe und gegen das Original.
+Ein Skill für [Claude Code](https://claude.com/claude-code). Eine Zahl wählt die Dichte, von 1 bis 5.
+Ein Name wählt die Stimme, von Wolf Schneider bis Thomas Bernhard.
+Ein Messskript prüft, ob das Ergebnis hält, was das Skill verspricht.
+
+[![Tests](https://github.com/ur-grue/tacheles/actions/workflows/tests.yml/badge.svg)](https://github.com/ur-grue/tacheles/actions/workflows/tests.yml)
+[![Lizenz: MIT](https://img.shields.io/badge/Lizenz-MIT-1d1b16)](LICENSE)
+[![Claude Code Plugin](https://img.shields.io/badge/Claude%20Code-Plugin-d97757)](https://code.claude.com/docs/en/plugins)
+[![Ohne Abhängigkeiten](https://img.shields.io/badge/Python%203-ohne%20Abh%C3%A4ngigkeiten-2f6b46)](skills/tacheles/scripts/messen.py)
+
+</div>
+
+![Vorher und nachher: derselbe Text auf Stufe 2 im Stil Wolf Schneider, darunter die Messwerte](assets/demo.svg)
 
 ```
 /tacheles 2 bericht.md
@@ -10,21 +23,11 @@ Ein Skill für [Claude Code](https://claude.com/claude-code). Eine Zahl wählt d
 /tacheles 1 Die Umsetzung der Maßnahmen erfolgt zeitnah …
 ```
 
-## Was es tut
+## Warum
 
-Tacheles redet, wer ohne Umschweife sagt, was ist. Das Skill nimmt einen deutschen Text und macht daraus den Text, den ein guter Redakteur daraus gemacht hätte. Es ist kein Kürzungswerkzeug: Jede Zahl, jeder Name, jede Begründung, jedes Beispiel des Originals bleibt. Was geht, ist die Füllung.
+Anti-Slop-Prompts haben zwei Fehler. Sie kürzen, bis die Begründung weg ist, und sie tauschen Floskeln gegen andere Floskeln. Tacheles macht es umgekehrt: Es zählt zuerst die Substanz des Originals, schreibt dann um, und misst am Ende nach, ob alles noch da ist. Kürze ist kein Ziel, sondern eine Nebenwirkung.
 
-Dieselbe Vorlage, drei Fassungen:
-
-> **Vorlage.** In der heutigen schnelllebigen Welt spielt die Digitalisierung der Kassensysteme eine entscheidende Rolle. Es ist wichtig zu beachten, dass die Umstellung aller 40 Filialen der Müller GmbH bis Ende 2026 erfolgen soll, da für das bestehende System seit Januar 2020 keine Sicherheitsupdates mehr zur Verfügung gestellt werden. Die Durchführung eines Pilotprojekts in zwei Bremer Filialen hat gezeigt, dass eine signifikante Beschleunigung des Kassiervorgangs von 55 auf 40 Sekunden realisiert werden konnte. Die Investition von rund 1,2 Millionen Euro wurde seitens der Geschäftsführung freigegeben – ein wichtiger Schritt in Richtung Zukunft. Nicht zuletzt ist hervorzuheben, dass kein Stellenabbau erfolgt, sondern frei werdende Mitarbeiter in die Kundenberatung integriert werden.
-
-> **Stufe 2, Stil `schneider`.** Die Müller GmbH tauscht bis Ende 2026 die Kassen in allen 40 Filialen aus. Der Grund: Für das alte System gibt es seit Januar 2020 keine Sicherheitsupdates mehr. Zwei Filialen in Bremen haben die neuen Kassen getestet. Dort dauert ein Kassiervorgang jetzt 40 statt 55 Sekunden. Die Geschäftsführung hat 1,2 Millionen Euro freigegeben. Niemand verliert seine Stelle: Wer an der Kasse frei wird, berät künftig Kunden.
-
-> **Stufe 3, Stil `tucholsky`.** Die Müller GmbH kauft neue Kassen. Vierzig Filialen, bis Ende 2026, 1,2 Millionen Euro. Man könnte das eine Investition nennen; es ist eine Reparatur. Das alte System bekommt seit Januar 2020 keine Sicherheitsupdates mehr, und wer sechs Jahre lang mit einer Kasse arbeitet, die niemand mehr schützt, der hat nicht gespart, der hat gewartet. Nun also Bremen: Zwei Filialen haben die neuen Geräte ausprobiert, und siehe da, das Kassieren dauert 40 Sekunden statt 55. Fünfzehn Sekunden. Das klingt nach wenig; zählen Sie das mal an einem Samstag zusammen. Und die Menschen? Niemand fliegt. Wer an der Kasse frei wird, berät Kunden. Das ist das Richtige.
-
-> **Stufe 5, ohne Stil.** Dass die Müller GmbH bis Ende 2026 sämtliche 40 Filialen mit neuen Kassen ausstattet, hat einen schlichten Grund: Seit Januar 2020 erhält das bisherige System keine Sicherheitsupdates mehr, und ein Kassensystem, dessen Lücken niemand mehr schließt, ist mit jedem Tag etwas weniger Werkzeug und etwas mehr Risiko. Das freundlichere Argument lieferte der Pilotversuch nach: In zwei Bremer Filialen dauert ein Kassiervorgang seither 40 statt 55 Sekunden. Rund 1,2 Millionen Euro hat die Geschäftsführung dafür freigegeben. Sie hat zugleich festgelegt, was mit den Menschen geschieht, die die Technik an der Kasse entbehrlich macht, und diese Festlegung ist so knapp wie eindeutig: Niemand verliert seine Stelle; wer dort frei wird, geht in die Kundenberatung.
-
-Alle neun Fakten der Vorlage stehen in jeder Fassung. Die Proben für alle Stufen und alle Stile liegen in [`references/stufen.md`](skills/tacheles/references/stufen.md) und [`references/stile/`](skills/tacheles/references/stile/).
+Der zweite Unterschied ist, dass Floskelfreiheit nicht reicht. Ein Text kann jedes Buzzword vermeiden und trotzdem nach Maschine klingen: wenn alle Sätze mit dem Subjekt beginnen, alle gleich lang sind, nur gereiht statt verkettet, ohne Standpunkt. Genau das prüft tacheles zusätzlich, mit den Mitteln der deutschen Stilistik und mit den Befunden der Forschung zu KI-Texten.
 
 ## Installation
 
@@ -35,9 +38,9 @@ Als Plugin, in Claude Code:
 /plugin install tacheles@tacheles
 ```
 
-Oder von Hand: den Ordner `skills/tacheles` nach `~/.claude/skills/tacheles` kopieren (für alle Projekte) oder nach `.claude/skills/tacheles` im Projekt.
+Von Hand: den Ordner `skills/tacheles` nach `~/.claude/skills/tacheles` kopieren, für alle Projekte, oder nach `.claude/skills/tacheles` im Projekt.
 
-Das Messskript braucht nur Python 3, keine Pakete.
+Das Messskript braucht Python 3 und keine Pakete.
 
 ## Die fünf Stufen
 
@@ -64,15 +67,27 @@ Die Stufe ist keine Länge. Stufe 1 wird oft länger als Stufe 3, weil sie erkl�
 | `mann` | Thomas Mann | 4–5 | Ironische Perioden, Parenthesen, Leitmotiv, Feierlichkeit leicht unterlaufen. |
 | `bernhard` | Thomas Bernhard | 4–5 | Wiederholung, Übertreibung, der eine lange Atemzug. Für Polemik. |
 
-Jedes Profil hat operationale Regeln, belegt aus Stilanalysen, dazu Karikatur-Fallen und die Probe. Ein Stil darf zuspitzen, was im Text steht; er erfindet keine Fakten, keine Gegner, keine Zitate.
+Jedes Profil hat operationale Regeln, belegt aus Stilanalysen, dazu Karikatur-Fallen und eine Probe an derselben Vorlage. Ein Stil darf zuspitzen, was im Text steht; er erfindet keine Fakten, keine Gegner, keine Zitate.
+
+Dieselbe Vorlage, drei Fassungen:
+
+> **Vorlage.** In der heutigen schnelllebigen Welt spielt die Digitalisierung der Kassensysteme eine entscheidende Rolle. Es ist wichtig zu beachten, dass die Umstellung aller 40 Filialen der Müller GmbH bis Ende 2026 erfolgen soll, da für das bestehende System seit Januar 2020 keine Sicherheitsupdates mehr zur Verfügung gestellt werden. Die Durchführung eines Pilotprojekts in zwei Bremer Filialen hat gezeigt, dass eine signifikante Beschleunigung des Kassiervorgangs von 55 auf 40 Sekunden realisiert werden konnte. Die Investition von rund 1,2 Millionen Euro wurde seitens der Geschäftsführung freigegeben – ein wichtiger Schritt in Richtung Zukunft. Nicht zuletzt ist hervorzuheben, dass kein Stellenabbau erfolgt, sondern frei werdende Mitarbeiter in die Kundenberatung integriert werden.
+
+> **Stufe 3, Stil `tucholsky`.** Die Müller GmbH kauft neue Kassen. Vierzig Filialen, bis Ende 2026, 1,2 Millionen Euro. Man könnte das eine Investition nennen; es ist eine Reparatur. Das alte System bekommt seit Januar 2020 keine Sicherheitsupdates mehr, und wer sechs Jahre lang mit einer Kasse arbeitet, die niemand mehr schützt, der hat nicht gespart, der hat gewartet. Nun also Bremen: Zwei Filialen haben die neuen Geräte ausprobiert, und siehe da, das Kassieren dauert 40 Sekunden statt 55. Fünfzehn Sekunden. Das klingt nach wenig; zählen Sie das mal an einem Samstag zusammen. Und die Menschen? Niemand fliegt. Wer an der Kasse frei wird, berät Kunden. Das ist das Richtige.
+
+> **Stufe 5, ohne Stil.** Dass die Müller GmbH bis Ende 2026 sämtliche 40 Filialen mit neuen Kassen ausstattet, hat einen schlichten Grund: Seit Januar 2020 erhält das bisherige System keine Sicherheitsupdates mehr, und ein Kassensystem, dessen Lücken niemand mehr schließt, ist mit jedem Tag etwas weniger Werkzeug und etwas mehr Risiko. Das freundlichere Argument lieferte der Pilotversuch nach: In zwei Bremer Filialen dauert ein Kassiervorgang seither 40 statt 55 Sekunden. Rund 1,2 Millionen Euro hat die Geschäftsführung dafür freigegeben. Sie hat zugleich festgelegt, was mit den Menschen geschieht, die die Technik an der Kasse entbehrlich macht, und diese Festlegung ist so knapp wie eindeutig: Niemand verliert seine Stelle; wer dort frei wird, geht in die Kundenberatung.
+
+Alle neun Fakten der Vorlage stehen in jeder Fassung. Die Proben für alle Stufen und Stile liegen in [`references/stufen.md`](skills/tacheles/references/stufen.md) und [`references/stile/`](skills/tacheles/references/stile/).
 
 ## Wie es zuverlässig wird
 
-Das Skill arbeitet in einer festen Reihenfolge. Drei Dinge machen den Unterschied zu einem gewöhnlichen Anti-Slop-Prompt:
+Drei Dinge unterscheiden das Skill von einem gewöhnlichen Anti-Slop-Prompt.
 
-1. **Das Inventar.** Vor dem ersten neuen Satz listet der Redakteur die Substanz des Originals: Zahlen, Namen, Zitate, Begründungen, Beispiele, Einschränkungen. Nach dem Umschreiben wird die Liste abgeglichen. Fehlt etwas, kommt es zurück, auch wenn der Text länger wird.
-2. **Die Stilistik.** Eine Wortliste fängt Floskeln, aber ein floskelfreier Text kann immer noch generisch klingen: Sätze, die alle mit dem Subjekt beginnen, alle gleich lang sind, nur gereiht statt verkettet, ohne Standpunkt. `references/stilistik.md` bringt die deutsche Stilistik und Textlinguistik (Thema-Rhema-Progression, Vorfeldbesetzung, Wiederaufnahme statt Konnektoren, Behaghels Gesetze, Bildfelder) mit der Forschung zu KI-Texten zusammen und macht daraus vierzehn Prinzipien mit Arbeitsanweisungen. `references/textsorten.md` sagt, was Nachricht, Bericht, Reportage, Kommentar und Glosse verlangen, belegt mit den Hausregeln von dpa und Spiegel und mit Passagen aus preisgekrönten Texten.
-3. **Die Messung.** `scripts/messen.py` prüft das Ergebnis gegen die Stufe und gegen das Original:
+**Das Inventar.** Vor dem ersten neuen Satz listet der Redakteur die Substanz des Originals: Zahlen, Namen, Zitate, Begründungen, Beispiele, Einschränkungen, Wertungen des Autors. Nach dem Umschreiben wird die Liste abgeglichen. Fehlt etwas, kommt es zurück, auch wenn der Text dadurch länger wird.
+
+**Die Stilistik.** [`references/stilistik.md`](skills/tacheles/references/stilistik.md) bringt die deutsche Stilistik und Textlinguistik mit der Forschung zu KI-Texten zusammen: thematische Progression nach Daneš, Vorfeldbesetzung, Wiederaufnahme statt Konnektoren, Behaghels Gesetze, Bildfelder nach Weinrich. Daraus werden vierzehn Prinzipien mit Arbeitsanweisungen und eine Prüfliste aus sieben Fragen. [`references/textsorten.md`](skills/tacheles/references/textsorten.md) sagt, was Nachricht, Bericht, Reportage, Kommentar und Glosse verlangen, belegt mit den Hausregeln von dpa und Spiegel und mit Passagen aus preisgekrönten Texten.
+
+**Die Messung.** [`scripts/messen.py`](skills/tacheles/scripts/messen.py) prüft das Ergebnis gegen die Stufe und gegen das Original:
 
 ```
 TACHELES · Messung · Stufe 3 (sachlich)
@@ -91,15 +106,15 @@ VERSTÖSSE (8)
   …
 ```
 
-Das Skript misst Satzlängen, Flesch-Amstad, Wiener Sachtextformel, LIX, Passiv, Nominalstil, Streckverben, Verbklammern, Floskeln aus einer Liste mit rund 700 Einträgen, Struktur-Tells (Gedankenstrich-Inflation, Fazit-Absätze, Dreierfiguren, Überschriften als Frage) und drei Stilistik-Werte: Anteil der Sätze mit Subjekt im Vorfeld, Streuung der Satzlängen, additive Konnektoren am Satzanfang. Mit `--vergleich original.txt` prüft es, ob Zahlen, Zitate, Adressen und Namen des Originals noch da sind und ob der Text unter 60 Prozent der Originallänge gefallen ist. Verstöße werden nachgebessert, Hinweise sind Redakteurssache.
+Gemessen werden Satzlängen, Flesch-Amstad, Wiener Sachtextformel, LIX, Passiv, Nominalstil, Streckverben, Verbklammern, rund 725 Floskeln und Struktur-Tells wie Gedankenstrich-Inflation, Fazit-Absätze oder Überschriften als Frage. Dazu drei Stilistik-Werte: Anteil der Sätze mit Subjekt im Vorfeld, Streuung der Satzlängen, additive Konnektoren am Satzanfang. Mit `--vergleich original.txt` prüft das Skript, ob Zahlen, Zitate, Adressen und Namen noch da sind und ob der Text unter 60 Prozent der Originallänge gefallen ist. Verstöße werden nachgebessert, Hinweise sind Redakteurssache.
 
-Die Floskelliste ist in Kategorien geteilt: Was nie Information trägt, ist ein Verstoß. Was im Kontext richtig sein kann („nachhaltig“ als ökologischer Begriff, „zudem“ als einzelner Konnektor), ist ein Hinweis. Die Liste stützt sich auf die Wikipedia-Projektseiten zu KI-Texten, deutsche Lektoratslisten und die einzigen zwei empirischen Studien zu deutschen KI-Texten (Juzek 2026; Irrgang u. a. 2024).
+Die Floskelliste ist geteilt: Was nie Information trägt, ist ein Verstoß. Was im Kontext richtig sein kann, etwa „nachhaltig“ als ökologischer Begriff oder ein einzelnes „zudem“, ist ein Hinweis. Sie stützt sich auf die Wikipedia-Projektseiten zu KI-Texten, deutsche Lektoratslisten und die beiden empirischen Studien zu deutschen KI-Texten (Juzek 2026; Irrgang u. a. 2024).
 
 ## Was es nicht tut
 
 - Es kürzt nicht auf Quote. Ein Ergebnis unter 60 Prozent der Originallänge gilt als verdächtig.
 - Es erfindet nichts. Fehlende Werte werden mit `[PRÜFEN: …]` markiert.
-- Es übersetzt nicht und jagt keine Fachtermini.
+- Es übersetzt nicht und jagt keine etablierten Fachtermini.
 - Es karikiert keinen Autor. Ein Stil ist Satzbau und Haltung, keine Sammlung von Manierismen.
 - Es formatiert nicht auf: keine Emoji, keine Fettwüsten, keine Überschriften als Frage.
 
@@ -118,9 +133,10 @@ skills/tacheles/
     ├── floskeln.txt          die Wortliste, gemeinsame Quelle für Skill und Skript
     ├── probe.md              die Vorlage, an der alle Stufen und Stile gezeigt werden
     └── stile/                acht Stilprofile
+tests/                        39 Tests, ohne Abhängigkeiten
 ```
 
-## Messskript allein benutzen
+## Das Messskript allein benutzen
 
 ```bash
 python3 skills/tacheles/scripts/messen.py --stufe 2 text.md
@@ -128,11 +144,44 @@ python3 skills/tacheles/scripts/messen.py --stufe 4 --stil fontane neu.md --verg
 python3 skills/tacheles/scripts/messen.py --json text.md
 ```
 
-Rückgabewert 0 ohne Verstöße, 1 mit Verstößen. Alle Werte sind Heuristiken ohne Wörterbuch; das Skript ersetzt keinen Redakteur, es zeigt ihm, wo er hinsehen muss.
+Rückgabewert 0 ohne Verstöße, 1 mit Verstößen, damit es in Vorlagen für Redaktionssysteme oder in eine CI passt. Alle Werte sind Heuristiken ohne Wörterbuch; das Skript ersetzt keinen Redakteur, es zeigt ihm, wo er hinsehen muss.
+
+## Einen eigenen Stil ergänzen
+
+Ein Stilprofil ist eine Markdown-Datei in `references/stile/`. Der Kopf enthält die Messschwellen, der Körper die Regeln:
+
+```markdown
+---
+name: rilke
+titel: Rainer Maria Rilke
+stufen: 4-5
+satz_avg: 14–24
+satz_max: 42
+passiv: 0.15
+nominal: 4.0
+---
+
+# Rainer Maria Rilke – …
+
+Zwei Absätze: Wie klingt der Stil, und wofür taugt er?
+
+## Regeln
+## Karikatur-Fallen
+## Probe
+## Quellen
+```
+
+Die Schwellen im Kopf haben Vorrang vor denen der Stufe; das Skript übernimmt sie mit `--stil rilke`. Wichtig sind die Karikatur-Fallen: Sie halten das Ergebnis davon ab, eine Parodie zu werden. Belege für die Regeln gehören unter Quellen, damit nachprüfbar bleibt, warum eine Regel dasteht. Die Tests prüfen jedes neue Profil auf Aufbau und plausible Schwellen:
+
+```bash
+python3 -m unittest discover -s tests
+```
 
 ## Quellen
 
 Wolf Schneider, *Deutsch für Profis*, *Deutsch fürs Leben*, *Deutsch für junge Profis* · Eduard Engel, *Deutsche Stilkunst* · Ludwig Reiners, *Stilkunst* · Hans-Werner Eroms, *Stil und Stilistik* · Barbara Sandig, *Textstilistik des Deutschen* · Klaus Brinker, *Linguistische Textanalyse* · František Daneš (thematische Progression) · Otto Behaghel, *Deutsche Syntax* · Harald Weinrich (Bildfeld) · Peter Linden, *Duden Handbuch Stilsicher schreiben* · Spiegel-Standards · dpa-Handbuch · Reporter-Forum · Reinhart u. a. 2025, *Do LLMs write like humans?* · Yang u. a. 2024 (thematische Progression in KI-Texten) · Arthur Schopenhauer, *Über Schriftstellerei und Stil* · Friedrich Nietzsche, *Zur Lehre vom Stil* · Kurt Tucholsky, *Ratschläge für einen schlechten Redner* · Langer, Schulz von Thun, Tausch, *Sich verständlich ausdrücken* · DIN SPEC 33429, Netzwerk Leichte Sprache, Klartext-Initiative Hohenheim, Bundesverwaltungsamt *Bürgernahe Verwaltungssprache* · Amstad 1978, Bamberger/Vanecek 1984 (Wiener Sachtextformel), Björnsson (LIX) · Juzek 2026, *AI-Associated Lexical Shifts Across 34 Languages* · Irrgang u. a. 2024, *Features and Detectability of German Texts Generated with LLMs* · Wikipedia, *Anzeichen für KI-generierte Inhalte* · Blomqvist 2004, *Der Fontane-Ton* · Kundera, *Verratene Vermächtnisse* (zu Kafka).
+
+Was sich nicht belegen ließ, ist in den Referenzdateien als unsicher markiert.
 
 ## Lizenz
 

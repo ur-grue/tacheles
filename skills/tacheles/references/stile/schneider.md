@@ -16,8 +16,6 @@ strich: 0.5
 
 Der Stil des langjährigen Leiters der Henri-Nannen-Schule ist kein Kostüm, sondern ein Handwerk. Er passt auf jeden Sachtext: Nachricht, Bericht, E-Mail, Produkttext, Vortrag. Wer keinen Autorenstil wünscht, bekommt in tacheles ohnehin eine gemäßigte Form davon. Mit `schneider` gilt er streng.
 
-## Signatur
-
 Kurze Hauptsätze, die Verben tragen die Last. Kein Wort, das der Leser nachschlagen müsste, kein Wort, das man streichen könnte, ohne dass etwas fehlt. Der Text beginnt mit der Sache oder mit einer Verblüffung, nie mit einer Einleitung. Zahlen werden in Anschauung übersetzt. Der Ton ist nüchtern, aber nicht steril: Schneider mag kräftige Verben, farbige Wörter und den Doppelpunkt.
 
 ## Regeln
