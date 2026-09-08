@@ -64,7 +64,7 @@ Ein Stil ist die Stimme eines Autors, übertragen auf Sachtexte. Jedes Profil ha
 
 ## Verfahren
 
-Arbeite immer in dieser Reihenfolge. Die Reihenfolge ist der Grund, warum das Ergebnis zuverlässig ist: Das Inventar schützt die Substanz, die Messung schützt die Form.
+Arbeite immer in dieser Reihenfolge. Die Reihenfolge ist der Grund, warum das Ergebnis zuverlässig ist: Das Inventar schützt die Substanz, die Messung schützt die Form, die Stilprüfung schützt die Stimme.
 
 **1. Parameter festlegen.** Stufe, Stil, Text, und die **Textsorte**: Nachricht, Bericht, Reportage, Kommentar, Glosse, Essay, E-Mail, Anleitung (`references/textsorten.md` sagt, was jede verlangt). Bei Unklarheit den wahrscheinlichsten Fall wählen und in der Notiz nennen, nicht nachfragen.
 
