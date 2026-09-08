@@ -1,0 +1,29 @@
+name: Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ["3.10", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Tests
+        run: python3 -m unittest discover -s tests -v
+      - name: Das Skript an der Vorlage prüfen
+        run: |
+          set -e
+          printf '%s' "In der heutigen schnelllebigen Welt spielt die Digitalisierung eine entscheidende Rolle. Es ist wichtig zu beachten, dass die Umstellung erfolgen soll." > /tmp/slop.txt
+          if python3 skills/tacheles/scripts/messen.py --stufe 3 /tmp/slop.txt; then
+            echo "Fehler: Slop-Text hätte Verstöße melden müssen"; exit 1
+          fi
+          echo "Slop erkannt, Rückgabewert wie erwartet."

@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600" font-family="'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif">
+  <rect width="1200" height="600" rx="10" fill="#fbfaf7"/>
+  <rect x="0.5" y="0.5" width="1199" height="599" rx="10" fill="none" stroke="#e3ded4"/>
+
+  <!-- Kopfzeile -->
+  <text x="44" y="56" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="19" fill="#1d1b16">/tacheles 2 schneider bericht.md</text>
+  <line x1="44" y1="78" x2="1156" y2="78" stroke="#e3ded4"/>
+
+  <!-- Spaltenköpfe -->
+  <text x="44" y="112" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="13" letter-spacing="1.4" fill="#a8341f">VORHER</text>
+  <text x="628" y="112" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="13" letter-spacing="1.4" fill="#2f6b46">NACHHER</text>
+  <line x1="600" y1="96" x2="600" y2="470" stroke="#e3ded4"/>
+
+  <!-- Vorher -->
+  <g font-size="17.5" fill="#4a453c">
+    <text x="44" y="148"><tspan fill="#a8341f" text-decoration="line-through">In der heutigen schnelllebigen Welt</tspan></text>
+    <text x="44" y="176"><tspan fill="#a8341f" text-decoration="line-through">spielt</tspan> die Digitalisierung der Kassen-</text>
+    <text x="44" y="204">systeme <tspan fill="#a8341f" text-decoration="line-through">eine entscheidende Rolle</tspan>.</text>
+    <text x="44" y="238"><tspan fill="#a8341f" text-decoration="line-through">Es ist wichtig zu beachten, dass</tspan> die</text>
+    <text x="44" y="266">Umstellung aller 40 Filialen der Müller</text>
+    <text x="44" y="294">GmbH bis Ende 2026 <tspan fill="#a8341f" text-decoration="line-through">erfolgen soll</tspan>, da für</text>
+    <text x="44" y="322">das System seit Januar 2020 keine</text>
+    <text x="44" y="350">Sicherheitsupdates mehr <tspan fill="#a8341f" text-decoration="line-through">zur Verfügung</tspan></text>
+    <text x="44" y="378"><tspan fill="#a8341f" text-decoration="line-through">gestellt werden</tspan>. <tspan fill="#a8341f" text-decoration="line-through">Die Durchführung</tspan> eines</text>
+    <text x="44" y="406">Pilotprojekts <tspan fill="#a8341f" text-decoration="line-through">hat gezeigt, dass eine</tspan></text>
+    <text x="44" y="434"><tspan fill="#a8341f" text-decoration="line-through">signifikante Beschleunigung realisiert</tspan></text>
+    <text x="44" y="462"><tspan fill="#a8341f" text-decoration="line-through">werden konnte</tspan>: von 55 auf 40 Sekunden.</text>
+  </g>
+
+  <!-- Nachher -->
+  <g font-size="17.5" fill="#1d1b16">
+    <text x="628" y="148">Die Müller GmbH tauscht bis Ende 2026</text>
+    <text x="628" y="176">die Kassen in allen 40 Filialen aus.</text>
+    <text x="628" y="210">Der Grund: Für das alte System gibt es</text>
+    <text x="628" y="238">seit Januar 2020 keine Sicherheits-</text>
+    <text x="628" y="266">updates mehr.</text>
+    <text x="628" y="300">Zwei Filialen in Bremen haben die</text>
+    <text x="628" y="328">neuen Kassen getestet. Dort dauert ein</text>
+    <text x="628" y="356">Kassiervorgang jetzt 40 statt 55</text>
+    <text x="628" y="384">Sekunden.</text>
+  </g>
+  <g font-size="14.5" fill="#6b6355" font-style="italic">
+    <text x="628" y="424">Alle neun Fakten des Originals stehen noch</text>
+    <text x="628" y="448">im Text. Gestrichen ist nur die Füllung.</text>
+  </g>
+
+  <!-- Messleiste -->
+  <line x1="44" y1="496" x2="1156" y2="496" stroke="#e3ded4"/>
+  <g font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="14.5">
+    <text x="44" y="532" fill="#8a8172">Verstöße</text>
+    <text x="146" y="532" fill="#a8341f">8</text>
+    <text x="166" y="532" fill="#a89f8f">→</text>
+    <text x="192" y="532" fill="#2f6b46">0</text>
+
+    <text x="252" y="532" fill="#8a8172">Ø Satzlänge</text>
+    <text x="386" y="532" fill="#a8341f">20,0</text>
+    <text x="430" y="532" fill="#a89f8f">→</text>
+    <text x="456" y="532" fill="#2f6b46">10,0</text>
+
+    <text x="536" y="532" fill="#8a8172">Passiv</text>
+    <text x="612" y="532" fill="#a8341f">80 %</text>
+    <text x="662" y="532" fill="#a89f8f">→</text>
+    <text x="688" y="532" fill="#2f6b46">0 %</text>
+
+    <text x="756" y="532" fill="#8a8172">Flesch</text>
+    <text x="832" y="532" fill="#a8341f">31,9</text>
+    <text x="876" y="532" fill="#a89f8f">→</text>
+    <text x="902" y="532" fill="#2f6b46">60,8</text>
+
+    <text x="982" y="532" fill="#8a8172">Zahlen</text>
+    <text x="1058" y="532" fill="#2f6b46">9 / 9</text>
+  </g>
+  <text x="44" y="566" font-size="14.5" fill="#8a8172" font-style="italic">Gemessen von scripts/messen.py gegen die Zielwerte der Stufe und gegen das Original.</text>
+</svg>
