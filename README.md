@@ -108,6 +108,12 @@ VERSTÖSSE (8)
 
 Das Skript misst Satzlängen, Flesch-Amstad, Wiener Sachtextformel, LIX, Passiv, Nominalstil, Streckverben, Verbklammern, rund 725 Floskeln und Struktur-Tells wie Gedankenstrich-Inflation, Fazit-Absätze oder Überschriften als Frage. Dazu kommen vier Stilistik-Befunde: Anteil der Sätze mit Subjekt im Vorfeld, Streuung der Satzlängen, additive Konnektoren am Satzanfang und unbelebte Subjekte mit Verben der Absicht („Die Studie fordert“). Mit `--vergleich original.txt` prüft das Skript, ob Zahlen, Zitate, Adressen und Namen noch da sind und ob der Text unter 60 Prozent der Originallänge gefallen ist. Verstöße bessert das Skill nach; über Hinweise entscheidet der Redakteur.
 
+### Nachweis
+
+Das Skill muss nicht nur messen, es muss sich messen lassen. In `evals/` liegen sechs Eingangstexte aus der Praxis: Lokalbericht, Entscheidungsvorlage, Exposé, Rede, Newsletter, lange E-Mail. Jeder trägt echten Slop und ein Inventar seiner Substanz. Jeder Fall läuft zweimal, mit Skill und ohne, und jeder Lauf bekommt sieben Prüfungen. Sie reichen von null Verstößen auf der Zielstufe bis zur Länge zwischen 67 und 133 Prozent des Originals.
+
+Stand Lauf 1: **42 von 42 Prüfungen mit Skill, 34 von 42 ohne.** Der Unterschied liegt nicht beim Slop, den streicht ein Modell auch ohne Anleitung. Er liegt bei der Stufe und bei der Länge. Vier von sechs Läufen ohne Skill verfehlen den verlangten Korridor, alle vier nach unten. Zwei kürzen auf 64 und 67 Prozent, einer bläht auf 142 Prozent auf. Die zwölf Ergebnisse und die zwei Defekte, die der erste Lauf am Werkzeug selbst fand, stehen in [evals/README.md](evals/README.md).
+
 Die Floskelliste ist geteilt: Was nie Information trägt, ist ein Verstoß. Was im Kontext richtig sein kann, etwa „nachhaltig“ als ökologischer Begriff oder ein einzelnes „zudem“, ist ein Hinweis. Sie stützt sich auf die Wikipedia-Projektseiten zu KI-Texten, deutsche Lektoratslisten und die beiden empirischen Studien zu deutschen KI-Texten (Juzek 2026; Irrgang u. a. 2024).
 
 ## Was es nicht tut
@@ -133,7 +139,8 @@ skills/tacheles/
     ├── floskeln.txt          die Wortliste, gemeinsame Quelle für Skill und Skript
     ├── probe.md              die Vorlage, an der alle Stufen und Stile gezeigt werden
     └── stile/                acht Stilprofile
-tests/                        43 Tests, ohne Abhängigkeiten
+tests/                        46 Tests, ohne Abhängigkeiten
+evals/                        sechs Textsorten, zwölf Läufe, sieben Prüfungen je Lauf
 ```
 
 ## Das Messskript allein benutzen
