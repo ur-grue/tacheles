@@ -203,6 +203,10 @@ def verbklammer(satz: str) -> tuple[int, str, str] | None:
 
 
 NOMINAL_RE = re.compile(r"\b[A-ZÄÖÜ]\w*(?:ung|ungen|heit|heiten|keit|keiten|ität|itäten|ierung|ierungen|isierung|isierungen)\b")
+# Lexikalisierte Wörter auf -ung/-heit/-keit, die keine Verbhandlung benennen,
+# sondern eine Sache, einen Ort, ein Haus oder einen Termin. Sie zu streichen
+# hieße Substanz streichen. Die Liste wuchs aus den Evals: „Lieferungen
+# sortieren“ und „90 Kollegen in der Fertigung“ sind kein Nominalstil.
 NOMINAL_AUSNAHMEN = {"zeitung", "zeitungen", "wohnung", "wohnungen", "rechnung", "rechnungen", "regierung", "regierungen",
                      "bedingung", "bedingungen", "sitzung", "sitzungen", "meinung", "meinungen", "ordnung", "zeitungen",
                      "kleidung", "nahrung", "richtung", "richtungen", "abteilung", "abteilungen", "verwaltung", "universität",
@@ -210,7 +214,19 @@ NOMINAL_AUSNAHMEN = {"zeitung", "zeitungen", "wohnung", "wohnungen", "rechnung",
                      "mehrheit", "minderheit", "kindheit", "einheit", "einheiten", "möglichkeit", "möglichkeiten",
                      "schwierigkeit", "schwierigkeiten", "öffentlichkeit", "persönlichkeit", "qualität", "identität",
                      "zeitungen", "stellung", "leitung", "leitungen", "lösung", "lösungen", "erfahrung", "erfahrungen",
-                     "forschung", "bildung", "ausbildung", "beziehung", "beziehungen", "bevölkerung", "bewegung", "übung", "übungen"}
+                     "forschung", "bildung", "ausbildung", "beziehung", "beziehungen", "bevölkerung", "bewegung", "übung", "übungen",
+                     "buchhandlung", "buchhandlungen", "lieferung", "lieferungen", "bestellung", "bestellungen",
+                     "fertigung", "montage", "versammlung", "versammlungen", "betriebsversammlung", "betriebsversammlungen",
+                     "veranstaltung", "veranstaltungen", "einrichtung", "einrichtungen", "wartung", "wartungen",
+                     "nachhaltigkeit", "heizung", "heizungen", "sendung", "sendungen", "siedlung", "siedlungen", "umgebung"}
+
+# Zitate und Werktitel sind fremde Wörter. Wer „Die Erfindung des Ungehorsams“
+# ankündigt, schreibt keinen Nominalstil, er nennt einen Buchtitel.
+ZITATSPANNE_RE = re.compile(r"„[^“]{1,300}“|»[^«]{1,300}«|\"[^\"\n]{1,300}\"")
+
+
+def ohne_zitate(text: str) -> str:
+    return ZITATSPANNE_RE.sub(" ", text)
 
 STRECKVERBEN = [
     r"zur verfügung (?:stellen|stellt|stellte|gestellt|stehen|steht|stand)",
@@ -427,7 +443,8 @@ def messen(rohtext: str, stufe: int, ziele: dict, floskeln: dict[str, list[str]]
                 m.befunde.append(Befund("hinweis", f"Langes Wort: {', '.join(lange[:3])} – trennen, kürzen oder erklären", i))
 
     # --- Nominalstil ---
-    nominale = [w for w in NOMINAL_RE.findall(text) if w.lower() not in NOMINAL_AUSNAHMEN]
+    nominale = [w for w in NOMINAL_RE.findall(ohne_zitate(text))
+                if w.lower() not in NOMINAL_AUSNAHMEN]
     m.nominal = len(nominale)
 
     # --- Floskeln und Füllwörter ---

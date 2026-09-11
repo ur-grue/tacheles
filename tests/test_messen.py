@@ -89,6 +89,19 @@ class SlopErkennung(unittest.TestCase):
         self.assertGreater(m.streck, 0)
         self.assertGreater(m.nominal, 0)
 
+    def test_werktitel_zaehlt_nicht_als_nominalstil(self):
+        # Der Buchtitel steht in Anführungszeichen und ist nicht der Stil des Autors.
+        m = miss("Wir lesen „Die Erfindung des Ungehorsams“ von Martina Clavadetscher.")
+        self.assertEqual(m.nominal, 0)
+
+    def test_erfindung_ohne_zitat_zaehlt(self):
+        m = miss("Die Erfindung des Rades veränderte die Welt.")
+        self.assertEqual(m.nominal, 1)
+
+    def test_lexikalisierte_woerter_sind_kein_nominalstil(self):
+        m = miss("Montags sortieren wir die Lieferungen. In der Fertigung arbeiten 90 Kollegen.")
+        self.assertEqual(m.nominal, 0)
+
     def test_falscher_handlungstraeger(self):
         m = miss("Anti-Slop-Prompts machen zwei Fehler. Der Markt belohnt schnelle Anbieter.")
         treffer = [b for b in m.befunde if "Handlungsträger" in b.text]
