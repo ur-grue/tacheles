@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" font-family="'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif">
+  <rect width="1280" height="640" fill="#fbfaf7"/>
+  <rect x="0" y="0" width="1280" height="10" fill="#a8341f"/>
+
+  <!-- Wortmarke -->
+  <text x="88" y="196" font-size="104" fill="#1d1b16" letter-spacing="-1">tacheles</text>
+  <text x="92" y="250" font-size="30" fill="#4a453c">Slop raus. Substanz bleibt.</text>
+
+  <!-- Trennlinie -->
+  <line x1="88" y1="300" x2="1192" y2="300" stroke="#e3ded4" stroke-width="2"/>
+
+  <!-- Vorher -->
+  <text x="88" y="352" font-family="ui-monospace,'DejaVu Sans Mono',Menlo,Consolas,monospace" font-size="15" letter-spacing="2" fill="#a8341f">VORHER</text>
+  <g font-size="25" fill="#4a453c">
+    <text x="88" y="398"><tspan fill="#a8341f" text-decoration="line-through">In der heutigen schnelllebigen Welt spielt</tspan></text>
+    <text x="88" y="434">die Digitalisierung <tspan fill="#a8341f" text-decoration="line-through">eine entscheidende Rolle</tspan>.</text>
+  </g>
+
+  <!-- Nachher -->
+  <text x="672" y="352" font-family="ui-monospace,'DejaVu Sans Mono',Menlo,Consolas,monospace" font-size="15" letter-spacing="2" fill="#2f6b46">NACHHER · STUFE 2</text>
+  <g font-size="25" fill="#1d1b16">
+    <text x="672" y="398">Die Müller GmbH tauscht bis Ende 2026</text>
+    <text x="672" y="434">die Kassen in 40 Filialen aus.</text>
+  </g>
+  <line x1="640" y1="326" x2="640" y2="452" stroke="#e3ded4" stroke-width="2"/>
+
+  <!-- Messzeile -->
+  <rect x="88" y="482" width="1104" height="54" rx="8" fill="#f3f0e9"/>
+  <text x="112" y="516" font-family="ui-monospace,'DejaVu Sans Mono',Menlo,Consolas,monospace" font-size="18" fill="#4a453c">nachgemessen:  Ø 11,0 Wörter  ·  Flesch-Amstad 78,6  ·  Passiv 0 %  ·  Nominalstil 0</text>
+
+  <!-- Fußzeile -->
+  <text x="88" y="588" font-size="22" fill="#4a453c">Ein Skill für Claude Code · fünf Stufen · acht Autorenstile · MIT</text>
+  <text x="1192" y="588" font-size="22" fill="#a8341f" text-anchor="end">autopunk.io</text>
+</svg>

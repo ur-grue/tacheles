@@ -1,0 +1,44 @@
+name: Floskel fehlt
+description: Eine Phrase, die tacheles durchgehen lässt, obwohl sie nichts sagt
+title: "Floskel: "
+labels: ["floskel"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Danke. Die Liste steht in `skills/tacheles/references/floskeln.txt` — eine Textdatei,
+        kein Code. Wer will, hängt die Zeile selbst an und schickt einen Pull Request.
+  - type: textarea
+    id: phrase
+    attributes:
+      label: Die Phrase
+      description: Wie sie im Text steht. Mehrere gern untereinander.
+      placeholder: |
+        spielt eine entscheidende Rolle
+        gilt es zu beachten
+    validations:
+      required: true
+  - type: textarea
+    id: beleg
+    attributes:
+      label: Wo ist sie dir begegnet?
+      description: Ein Satz aus einem echten Text reicht. Ohne Beleg landet die Phrase leicht in der Liste, obwohl sie selten vorkommt.
+      placeholder: "Aus einer Pressemitteilung: „Die Digitalisierung spielt eine entscheidende Rolle für den Standort.“"
+    validations:
+      required: true
+  - type: dropdown
+    id: haerte
+    attributes:
+      label: Verstoß oder Hinweis?
+      description: Kann die Phrase in irgendeinem Zusammenhang Information tragen?
+      options:
+        - "Verstoß — sie sagt nie etwas"
+        - "Hinweis — im Fachkontext kann sie richtig sein"
+        - "Weiß ich nicht"
+    validations:
+      required: true
+  - type: textarea
+    id: ersatz
+    attributes:
+      label: Wodurch ersetzt man sie?
+      description: Optional. Was müsste stattdessen dastehen — wer, was genau, wie viel, bis wann?

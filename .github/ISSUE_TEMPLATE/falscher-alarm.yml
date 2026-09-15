@@ -1,0 +1,48 @@
+name: Falscher Alarm
+description: Das Messskript streicht etwas an, was keiner ist
+title: "Falscher Alarm: "
+labels: ["falscher-alarm"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Ein falscher Alarm ist ein Fehler im Werkzeug, kein Bedienfehler. Zwei der bisherigen
+        kamen aus den Evals — ein Buchtitel, den der Nominalisierungszähler für Nominalstil hielt.
+  - type: textarea
+    id: satz
+    attributes:
+      label: Der Satz
+      description: Die Stelle, die angestrichen wurde. Bitte wörtlich.
+      placeholder: Wir lesen „Die Erfindung des Ungehorsams“ von Martina Clavadetscher.
+    validations:
+      required: true
+  - type: input
+    id: befehl
+    attributes:
+      label: Der Befehl
+      placeholder: python3 skills/tacheles/scripts/messen.py --stufe 2 text.md
+    validations:
+      required: true
+  - type: textarea
+    id: ausgabe
+    attributes:
+      label: Die Ausgabe
+      description: Die Zeile mit dem Befund, gern mit zwei Zeilen Umgebung.
+      render: text
+      placeholder: "✗ 3 Nominalisierungen (2.7 je 100 Wörter): Erfindung, …"
+    validations:
+      required: true
+  - type: textarea
+    id: warum
+    attributes:
+      label: Warum ist es keiner?
+      description: Ein Satz genügt.
+      placeholder: „Die Erfindung des Ungehorsams“ ist ein Buchtitel, nicht der Stil des Autors.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Aus .claude-plugin/plugin.json oder der Tag, den du benutzt.
+      placeholder: "1.2.0"
