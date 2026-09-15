@@ -1,0 +1,233 @@
+{
+  "skill_name": "tacheles",
+  "beschreibung": "Sechs Textsorten, die Sebastian tatsächlich schreibt. Jeder Eingangstext enthält echten Slop und echte Substanz. Ein Lauf ist erfolgreich, wenn das Ergebnis null Verstöße auf der Zielstufe hat UND jeder Substanzpunkt noch im Text steht. Beides prüft scripts/messen.py nach.",
+  "aufruf": "python3 skills/tacheles/scripts/messen.py --stufe N [--stil NAME] ergebnis.md --vergleich evals/texte/<datei>",
+  "evals": [
+    {
+      "id": 1,
+      "name": "journalismus-lokalbericht",
+      "textsorte": "Bericht",
+      "stufe": 2,
+      "stil": null,
+      "datei": "evals/texte/1-journalismus.md",
+      "prompt": "/tacheles 2 evals/texte/1-journalismus.md",
+      "erwartet": "Nachrichtenstil. Kernfakt im ersten Satz, Behördendeutsch raus (erfolgt, seitens, im Rahmen, Durchführung), Passiv in Aktiv mit benanntem Akteur, das Zitat von Kalisch wörtlich erhalten. Die Gegenstimme der CDU und die Händlerumfrage bleiben, sie sind die Balance des Berichts.",
+      "substanz": [
+        "3. September",
+        "27 zu 19",
+        "1. Februar 2027",
+        "1,50 Euro",
+        "2,80 Euro",
+        "340",
+        "1,9 Millionen Euro",
+        "41 Prozent",
+        "62 Prozent",
+        "180",
+        "2028",
+        "Lüneburg",
+        "Tiefbauamt",
+        "Claudia Kalisch",
+        "Andreas Meihsies",
+        "Handelsverband Nord",
+        "CDU",
+        "Wer in der Innenstadt wohnt, soll sein Auto auch abstellen können"
+      ],
+      "fallen": [
+        "zeitnah darf nicht stehen bleiben, es gibt aber kein Datum: gehört als [PRÜFEN] markiert, nicht erfunden",
+        "Das Zitat darf nicht geglättet werden"
+      ],
+      "substanz_weich": [
+        "zwei Enthaltungen"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "business-entscheidungsvorlage",
+      "textsorte": "Bericht an Entscheider",
+      "stufe": 3,
+      "stil": null,
+      "datei": "evals/texte/2-business.md",
+      "prompt": "/tacheles 3 evals/texte/2-business.md",
+      "erwartet": "Beratersprache raus, Empfehlung mit Begründung bleibt. Die drei Anbieter bleiben vergleichbar, jede Zahl steht. Das Klumpenrisiko beim Hamburger Anbieter ist die wichtigste Einschränkung der Vorlage und darf nicht wegfallen, auch nicht abgeschwächt werden.",
+      "substanz": [
+        "2014",
+        "Juni 2027",
+        "Salesforce",
+        "HubSpot",
+        "Hamburg",
+        "148.000 Euro",
+        "89.000 Euro",
+        "71.000 Euro",
+        "Frankfurt",
+        "22 Mitarbeiter",
+        "52.000 Datensätze"
+      ],
+      "fallen": [
+        "Die Empfehlung für den Hamburger Anbieter steht im Widerspruch zum genannten Risiko: Der Widerspruch ist im Original und muss sichtbar bleiben, nicht aufgelöst werden",
+        "Datenhaltung in Deutschland als Ausschlussgrund für HubSpot darf nicht verschwinden"
+      ],
+      "substanz_weich": [
+        "neun Monaten",
+        "Quellcode-Hinterlegung"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "expose-dokumentarfilm",
+      "textsorte": "Exposé",
+      "stufe": 4,
+      "stil": null,
+      "datei": "evals/texte/3-expose.md",
+      "prompt": "/tacheles 4 evals/texte/3-expose.md",
+      "erwartet": "Pitch-Floskeln raus (In einer Welt, Reise, vielschichtig, beleuchtet, eröffnet neue Perspektiven, setzt neue Maßstäbe). Die drei Figuren behalten ihre Konkretion: Alter, Rolle, Konflikt. Der Binärkontrast kein Abgesang / um Würde trägt echte Abgrenzung und darf als Sachaussage bleiben, nicht als rhetorische Figur.",
+      "substanz": [
+        "52 Minuten",
+        "Mehrum",
+        "Peine",
+        "31. Dezember 2026",
+        "47 Jahren",
+        "Reinhold Kube",
+        "58",
+        "1989",
+        "Ayla Demir",
+        "31",
+        "Klaus Saemann",
+        "180",
+        "40 Prozent",
+        "August",
+        "EnBW",
+        "14. Januar",
+        "Leitstand",
+        "Kesselhaus",
+        "340.000 Euro",
+        "NDR",
+        "nordmedia",
+        "220.000 Euro",
+        "120.000 Euro"
+      ],
+      "fallen": [
+        "Zugang zum Leitstand ja, zum Kesselhaus nein: Diese Einschränkung ist produktionsrelevant und geht leicht verloren",
+        "Die Finanzierungslücke von 120.000 Euro darf nicht geschönt werden"
+      ],
+      "substanz_weich": [
+        "März und Dezember 2026"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "rede-betriebsversammlung",
+      "textsorte": "Rede",
+      "stufe": 3,
+      "stil": "kaestner",
+      "datei": "evals/texte/4-rede.md",
+      "prompt": "/tacheles 3 kaestner evals/texte/4-rede.md",
+      "erwartet": "Festredenfloskeln raus (Meilenstein, Leidenschaft und Engagement, einen Blick zurückwerfen, auf einem guten Weg, Herausforderung meistern). Der Ton bleibt ansprechbar: Es ist eine Rede, sie wird gehört, nicht gelesen. Die schlechte Nachricht darf nicht weicher werden als im Original, die Zusage nicht härter.",
+      "substanz": [
+        "12. November 2001",
+        "25 Jahren",
+        "45",
+        "380",
+        "1,4 Millionen Pumpen",
+        "60 Prozent",
+        "Italien",
+        "30 Prozent",
+        "Januar",
+        "90",
+        "Montage",
+        "85 Prozent",
+        "400.000 Euro",
+        "April",
+        "40 Arbeitsplätze",
+        "Februar",
+        "Betriebsrat"
+      ],
+      "fallen": [
+        "Wir sind auf einem guten Weg ist eine Wertung des Redners und bleibt als Aussage, ohne Fazit-Etikett",
+        "Kästner-Stil darf nicht in Kinderbuchton kippen, die Zuhörer sind Erwachsene mit Kurzarbeit vor sich"
+      ],
+      "substanz_weich": [
+        "keine betriebsbedingten Kündigungen",
+        "drei Monate"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "newsletter-buchhandlung",
+      "textsorte": "Newsletter",
+      "stufe": 2,
+      "stil": null,
+      "datei": "evals/texte/5-newsletter.md",
+      "prompt": "/tacheles 2 evals/texte/5-newsletter.md",
+      "erwartet": "Marketingsprache, Emoji und Fett-Inflation raus. Jeder Termin, jeder Preis, jede Telefonnummer bleibt: Das ist der Nutzwert des Newsletters. Die Änderung der Öffnungszeiten mit ihrer Begründung bleibt vollständig.",
+      "substanz": [
+        "23. Oktober",
+        "19:30",
+        "Judith Schalansky",
+        "12 Euro",
+        "8 Euro",
+        "04131 442288",
+        "30 von 90",
+        "6. November",
+        "Die Erfindung des Ungehorsams",
+        "Martina Clavadetscher",
+        "1. November",
+        "18 Uhr",
+        "10 Uhr",
+        "Wöhler"
+      ],
+      "fallen": [
+        "Die Montagsschließung hat eine Begründung (Lieferungen sortieren), die leicht als Füllung gelesen wird, aber Information trägt",
+        "Ganz gleich, ob steht in der Floskelliste, die Einladung an beide Gruppen ist aber Inhalt und muss anders erhalten werden"
+      ],
+      "substanz_weich": [
+        "kostenlos"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "email-projektverzug",
+      "textsorte": "lange E-Mail",
+      "stufe": 3,
+      "stil": null,
+      "datei": "evals/texte/6-email.md",
+      "prompt": "/tacheles 3 evals/texte/6-email.md",
+      "erwartet": "Weichmacher und Verantwortungsvermeidung raus: wurde entschieden, hat sich herausgestellt, ich wollte mich einmal melden, selbstverständlich jederzeit gerne. Wer was tut, steht im Satz. Die Ursachenkette bleibt vollständig, auch der unangenehme Teil: Die Testdaten kamen vom Dienstleister.",
+      "substanz": [
+        "15. Dezember",
+        "8 Prozent",
+        "26. Februar",
+        "sechs Wochen",
+        "vier Wochen",
+        "45.000 Euro",
+        "Herr Brandt",
+        "Einkauf",
+        "Januar",
+        "Frau Özdemir",
+        "Standortleitungen",
+        "Wartungsverträge",
+        "Thomas Reinhardt"
+      ],
+      "fallen": [
+        "Nach Abstimmung mit dem Dienstleister wurde entschieden versteckt, wer entschieden hat: Das Original gibt es nicht her, also [PRÜFEN] statt Erfindung",
+        "Die Schuldfrage bei den Testdaten darf weder verschärft noch getilgt werden"
+      ],
+      "substanz_weich": [
+        "Rabattstufen"
+      ]
+    }
+  ],
+  "assertions_pro_lauf": [
+    "messen.py meldet null Verstöße auf der Zielstufe",
+    "messen.py --vergleich meldet keine fehlende Zahl",
+    "messen.py --vergleich meldet kein verändertes oder verschwundenes Zitat",
+    "Jeder harte Substanzpunkt steht im Ergebnis, Flexion toleriert",
+    "Kein Eintrag aus floskeln.txt der Kategorien Einstiegsfloskeln, Schlussfloskeln, Bedeutungsbehauptungen, Metakommentare, Buzzwords",
+    "Die mittlere Satzlänge liegt im Zielkorridor der Stufe, bei gesetztem Stil in dem des Profils",
+    "Die Länge liegt zwischen 67 und 133 Prozent des Originals"
+  ],
+  "hinweis_zur_messung": "Zwei Grenzen gehören in die Eval, nicht ins Ergebnis. Erstens kann ein Zeichenvergleich nicht entscheiden, ob eine umformulierte Tatsache erhalten ist; solche Punkte stehen in substanz_weich und werden gelistet, nicht benotet. Zweitens ist die Längenspanne 67 bis 133 Prozent eine Faustregel: Ein Lektorat kürzt, es streicht nicht das Drittel, und es bläht nicht auf. Läufe dicht an der Grenze muss ein Mensch lesen.",
+  "nicht_benotet": [
+    "Die Redaktionsnotiz: Der Lauf ohne Skill kann keine haben, ein Punkt dafür wäre geschenkt. Das Skript meldet nur ihre Länge.",
+    "Die Punkte aus substanz_weich: ob „kostenlos“ als „kostet nichts“ erhalten ist, entscheidet kein Zeichenvergleich."
+  ]
+}

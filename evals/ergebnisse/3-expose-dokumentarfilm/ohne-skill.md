@@ -1,0 +1,11 @@
+Exposé: "Die letzte Schicht" — Dokumentarfilm, 52 Minuten
+
+Am 31. Dezember 2026 geht das Kraftwerk Mehrum bei Peine nach 47 Jahren endgültig vom Netz. Dieses Datum ist der Fixpunkt des Films: ein Termin, der feststeht, während alles andere offen ist. Was er bedeutet, zeigt sich nicht am Abschalttag selbst, sondern in den Monaten davor, in denen Belegschaft und Gemeinde sich darauf einrichten müssen.
+
+Der Film folgt drei Personen, deren Situationen sich nur teilweise überschneiden. Reinhold Kube, 58, ist seit 1989 Schichtleiter; schon sein Vater hat in diesem Kraftwerk gearbeitet. Ayla Demir, 31, Elektrotechnikerin, wurde vor zwei Jahren eingestellt und muss nun umschulen — sie verliert keine Lebensgeschichte, sondern einen Anfang. Klaus Saemann, der Bürgermeister, muss eine Antwort auf 180 wegfallende Arbeitsplätze finden, während seine Gemeinde 40 Prozent ihrer Gewerbesteuer verliert. Drei Zeithorizonte also: ein Berufsleben, das ausläuft, eines, das neu ansetzen muss, und eine Kommune, die über beide hinaus planen muss.
+
+Ein Abgesang soll daraus nicht werden. Nostalgie verklärt, was im Rückblick einfacher aussieht, als es war, und sie hilft niemandem, der im März 2026 noch zur Schicht erscheint. Der Film fragt stattdessen nach Würde: wie Menschen ihre Arbeit beenden, wenn das Ende von außen gesetzt ist, und mit welcher Haltung sie das tun. Über Strukturwandel wird meist in Zahlen verhandelt — 180 Stellen, 40 Prozent Gewerbesteuer. Diese Zahlen bleiben richtig, aber sie sagen nichts darüber, was sie in einem Leitstand oder in einem Rathaus auslösen.
+
+Gedreht wird in vier Blöcken zwischen März und Dezember 2026, unter anderem während der letzten Revision im August. Die Drehgenehmigung des Betreibers EnBW liegt vor, schriftlich zugesagt am 14. Januar. Sie umfasst den Zugang zum Leitstand, nicht jedoch zum Kesselhaus — die Arbeit an der Anlage selbst bleibt damit außerhalb des Bildes und muss über den Leitstand und über die Erzählungen der Beteiligten erschlossen werden.
+
+Das Budget beträgt 340.000 Euro. Die Finanzierung steht zu zwei Dritteln: NDR und nordmedia haben 220.000 Euro bewilligt. Die verbleibenden 120.000 Euro sollen über eine Koproduktion eingebracht werden.
