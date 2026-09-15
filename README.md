@@ -8,10 +8,13 @@ Ein Skill für [Claude Code](https://claude.com/claude-code). Die Dichte wählt 
 die Stimme wahlweise ein Name: Wolf Schneider, Kästner, Tucholsky, Kisch, Kafka, Fontane, Mann, Bernhard.
 Ob das Ergebnis hält, was es verspricht, misst ein Skript nach.
 
+Ein Werkzeug aus der Werkstatt von [Autopunk](https://autopunk.io/?utm_source=github&utm_medium=readme&utm_campaign=tacheles&utm_content=kopf).
+
 [![Tests](https://github.com/ur-grue/tacheles/actions/workflows/tests.yml/badge.svg)](https://github.com/ur-grue/tacheles/actions/workflows/tests.yml)
 [![Lizenz: MIT](https://img.shields.io/badge/Lizenz-MIT-1d1b16)](LICENSE)
 [![Claude Code Plugin](https://img.shields.io/badge/Claude%20Code-Plugin-d97757)](https://code.claude.com/docs/en/plugins)
 [![Ohne Abhängigkeiten](https://img.shields.io/badge/Python%203-ohne%20Abh%C3%A4ngigkeiten-2f6b46)](skills/tacheles/scripts/messen.py)
+[![Version 1.2.0](https://img.shields.io/badge/Version-1.2.0-6b6257)](CHANGELOG.md)
 
 </div>
 
@@ -23,6 +26,10 @@ Ob das Ergebnis hält, was es verspricht, misst ein Skript nach.
 /tacheles 1 Die Umsetzung der Maßnahmen erfolgt zeitnah …
 ```
 
+Sechs Textsorten, je ein Lauf mit Skill und einer ohne: **42 von 42 Prüfungen bestanden mit,
+34 von 42 ohne** — ein Lauf je Variante, das zeigt eine Richtung und keine Streuung.
+Nachzurechnen in [`evals/`](evals/README.md).
+
 ## Warum
 
 Wer Slop mit einem Prompt bekämpft, bekommt meistens zwei Ergebnisse. Das Modell streicht so lange, bis aus „Wir empfehlen Anbieter A, weil nur er die Daten im Haus behält“ ein „Wir empfehlen Anbieter A“ geworden ist. Die Floskeln wiederum ersetzt es durch neue. Tacheles geht den umgekehrten Weg: Erst notiert es, was der Text an Zahlen, Namen und Begründungen enthält, dann schreibt es um, am Ende prüft es, ob alles noch dasteht. Kürzer wird der Text dabei meistens. Darauf zielt das Verfahren aber nicht.
@@ -31,16 +38,21 @@ Dazu kommt der zweite Punkt: Floskelfreiheit allein reicht nicht. Ein Text kann 
 
 ## Installation
 
-Als Plugin, in Claude Code:
+Drei Wege, je nachdem, wie viel davon man will:
 
 ```
-/plugin marketplace add ur-grue/tacheles
-/plugin install tacheles@tacheles
+# 1 · Als Plugin in Claude Code — der kurze Weg
+/plugin marketplace add ur-grue/tacheles && /plugin install tacheles@tacheles
+
+# 2 · Als Skill-Ordner, ohne Plugin-System
+git clone https://github.com/ur-grue/tacheles && cp -r tacheles/skills/tacheles ~/.claude/skills/
+
+# 3 · Nur das Messskript, ohne Claude
+curl -O https://raw.githubusercontent.com/ur-grue/tacheles/main/skills/tacheles/scripts/messen.py
 ```
 
-Von Hand: den Ordner `skills/tacheles` nach `~/.claude/skills/tacheles` kopieren, dann steht er in allen Projekten bereit. Nach `.claude/skills/tacheles` kopiert, gilt er nur im jeweiligen Projekt.
-
-Das Messskript braucht Python 3 und keine Pakete.
+Weg 2 nach `.claude/skills/tacheles` kopiert statt nach `~/.claude/skills/`, gilt der Skill nur im
+jeweiligen Projekt. Weg 3 braucht Python 3 und kein einziges Paket.
 
 ## Die fünf Stufen
 
@@ -53,6 +65,18 @@ Das Messskript braucht Python 3 und keine Pakete.
 | 5 | elaboriert | literarische Prosa, Festrede | 18–30 | Rhythmus, Parenthesen, präzise Fremdwörter; kein Wort ohne Arbeit |
 
 Die Stufe ist keine Länge: Stufe 1 wird oft länger als Stufe 3, weil sie erklärt, und Stufe 5 baut lange Sätze, keine leeren. Die Zielwerte stammen aus DIN SPEC 33429, den Regeln für Einfache Sprache, der dpa-Faustregel, der Klartext-Initiative Hohenheim und Messungen deutscher Medien.
+
+Dieselbe Auskunft, einmal je Stufe:
+
+**1 · einfach** — Die Müller GmbH kauft neue Kassen. Das alte System ist nicht mehr sicher.
+
+**2 · klar** — Die Müller GmbH tauscht bis Ende 2026 die Kassen in 40 Filialen aus. Das alte System bekommt seit Januar 2020 keine Sicherheitsupdates mehr.
+
+**3 · sachlich** — Weil das alte Kassensystem seit Januar 2020 keine Sicherheitsupdates mehr bekommt, rüstet die Müller GmbH bis Ende 2026 alle 40 Filialen um.
+
+**4 · ausführlich** — Der Anlass ist nicht die Technik, sondern ihr Verfallsdatum: Seit Januar 2020 schließt niemand mehr die Lücken im Kassensystem der Müller GmbH, und deshalb rüstet das Unternehmen bis Ende 2026 alle 40 Filialen um.
+
+**5 · elaboriert** — Dass die Müller GmbH bis Ende 2026 sämtliche 40 Filialen umrüstet, hat einen schlichten Grund: Seit Januar 2020 erhält das bisherige Kassensystem keine Sicherheitsupdates mehr, und eine Kasse, deren Lücken niemand mehr schließt, ist mit jedem Tag etwas weniger Werkzeug und etwas mehr Risiko.
 
 ## Die acht Stile
 
@@ -124,6 +148,17 @@ Die Floskelliste ist geteilt: Was nie Information trägt, ist ein Verstoß. Was 
 - Es karikiert keinen Autor. Ein Stil ist Satzbau und Haltung, keine Sammlung von Manierismen.
 - Es formatiert nicht auf: keine Emoji, keine Fettwüsten, keine Überschriften als Frage.
 
+## Wann tacheles das falsche Werkzeug ist
+
+- **Lyrik und literarische Prosa.** Wer Rhythmus über Verständlichkeit stellt, braucht kein
+  Lesbarkeitsmaß. Die Stufen messen, was hier niemanden interessiert.
+- **Verträge, Bescheide, AGB.** In juristischen Texten hat die Formel eine Rechtsfolge.
+  „Unverzüglich“ heißt etwas anderes als „schnell“, und das Skript weiß davon nichts.
+- **Fremde Zitate und O-Töne.** Sie bleiben, wie sie gesagt wurden. tacheles rührt Zitate nicht an,
+  aber wer einen Text redigiert, der fast nur aus Zitaten besteht, redigiert fast nichts.
+- **Andere Sprachen.** Floskelliste, Silbenzählung und Satzmaße sind auf Deutsch geeicht.
+  Englische Texte gehen durch, das Ergebnis ist aber ohne Wert.
+
 ## Aufbau
 
 ```
@@ -184,6 +219,18 @@ Die Schwellen im Kopf haben Vorrang vor denen der Stufe; das Skript übernimmt s
 python3 -m unittest discover -s tests
 ```
 
+## Mitmachen
+
+Am meisten hilft, was das Werkzeug an der Wirklichkeit misst:
+
+- **Eine Floskel fehlt?** [`references/floskeln.txt`](skills/tacheles/references/floskeln.txt) ist
+  eine Textdatei mit Kategorien. Eine Zeile anhängen genügt, kein Python nötig — Skill und Skript
+  lesen dieselbe Datei.
+- **Falscher Alarm?** Wenn das Skript etwas anstreicht, was keiner ist, ist das ein Fehler im
+  Werkzeug. Genau so sind die letzten zwei gefunden worden.
+- Für beides liegen [Vorlagen](.github/ISSUE_TEMPLATE/) bereit, das Vorgehen steht in
+  [CONTRIBUTING.md](CONTRIBUTING.md).
+
 ## Quellen
 
 **Stillehren.** Wolf Schneider, *Deutsch für Profis*, *Deutsch fürs Leben*, *Deutsch für junge Profis* · Eduard Engel, *Deutsche Stilkunst* · Ludwig Reiners, *Stilkunst* · Arthur Schopenhauer, *Über Schriftstellerei und Stil* · Friedrich Nietzsche, *Zur Lehre vom Stil* · Kurt Tucholsky, *Ratschläge für einen schlechten Redner* · Peter Linden, *Duden Handbuch Stilsicher schreiben*.
@@ -199,6 +246,16 @@ python3 -m unittest discover -s tests
 **Zu einzelnen Stilen.** Blomqvist 2004, *Der Fontane-Ton* · Milan Kundera, *Verratene Vermächtnisse*, zu Kafka.
 
 Was sich nicht belegen ließ, ist in den Referenzdateien als unsicher markiert.
+
+## Von Autopunk
+
+tacheles kommt aus der Autopunk-Werkstatt. Dort entstehen offene Werkzeuge für Leute, die Medien
+machen.
+
+- [**autopunk-media-skills**](https://github.com/ur-grue/autopunk-media-skills?utm_source=github&utm_medium=readme&utm_campaign=tacheles&utm_content=fuss) —
+  über 400 freie Skills und neun Agents. Für Journalistinnen, Producer, Podcaster, YouTuber.
+- [**autopunk.io**](https://autopunk.io/?utm_source=github&utm_medium=readme&utm_campaign=tacheles&utm_content=fuss) — wer dahintersteckt und was sonst
+  noch entsteht.
 
 ## Lizenz
 
