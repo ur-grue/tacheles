@@ -8,6 +8,8 @@ Ein Skill für [Claude Code](https://claude.com/claude-code). Die Dichte wählt 
 die Stimme wahlweise ein Name: Wolf Schneider, Kästner, Tucholsky, Kisch, Kafka, Fontane, Mann, Bernhard.
 Ob das Ergebnis hält, was es verspricht, misst ein Skript nach.
 
+*An open-source [Claude Code](https://claude.com/claude-code) skill that edits German text like a seasoned copy editor: it strips AI slop and keeps the substance — five density levels, eight author voices, every result measured.*
+
 Ein Werkzeug aus der Werkstatt von [Autopunk](https://autopunk.io/?utm_source=github&utm_medium=readme&utm_campaign=tacheles&utm_content=kopf).
 
 [![Tests](https://github.com/ur-grue/tacheles/actions/workflows/tests.yml/badge.svg)](https://github.com/ur-grue/tacheles/actions/workflows/tests.yml)
